@@ -1,1 +1,1 @@
-//Here goes all out JavaScript scripts
+//Here goes all our JavaScript scripts
