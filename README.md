@@ -1,11 +1,11 @@
 ## Participants
-* James Partsafas 40170301 (JamesParsafas)
-* Ghaith Chrit 40114180 (Ghaith-Chrit)
-* Divleen Kaur Ahluwalia 40116121 (Divleen12)
-* Christina Darstbanian 40097340 (Chr728)
-* Sriram Kanagalingham 40170212 (Siri2K)
-* Tony Yang 40171440 (fullKRL)
-* Jan Mikhail Alexei Ong 40154849 (janong24)
+* James Partsafas (JamesParsafas)
+* Ghaith Chrit (Ghaith-Chrit)
+* Divleen Kaur Ahluwalia (Divleen12)
+* Christina Darstbanian (Chr728)
+* Sriram Kanagalingham (Siri2K)
+* Tony Yang (fullKRL)
+* Jan Mikhail Alexei Ong (janong24)
 
 ## Languages & techniques
 ### Front-end
@@ -15,6 +15,12 @@
 * PHP Laravel
 ### Database
 * PostgreSQL
+
+## Objective
+Develop an online marketplace 
+
+## Description
+This website applications allows the signed-in user to shop for products online. 
 
 ## Core features
 * User can view product lists
