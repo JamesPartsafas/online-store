@@ -23,6 +23,6 @@ Develop an online marketplace
 Amaznot is an e-commerce website where users can order items from a wide selection of products. It was built as as part of the course SOEN 341. It contains many features present in real, production e-commerce websites, such as user log-in, item filtering, and order listing.
 
 ## Core features
-* User can view product lists
-* User can sign up/login (user authentication)
-* User can purchase items
+* Browsing Items
+* Adding Product to the cart
+* Checking out
