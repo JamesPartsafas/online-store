@@ -6,15 +6,17 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
-class ListController extends Controller
+class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $id = $request->route('id');
+
         try 
         {
             $product = Product::
                 select('id', 'name', 'category', 'subcategory', 'price', 'about', 'details', 'weight', 'image')
-                ->where('id', 1)
+                ->where('id', $id)
                 ->firstOrFail();
         }
         catch (QueryException $ex)
@@ -22,8 +24,8 @@ class ListController extends Controller
             return abort(404);
         }
 
-        return view('pages.productlist', [
-            "product" => $product
+        return view('pages.productpage', [
+            'product' => $product
         ]);
     }
 }
