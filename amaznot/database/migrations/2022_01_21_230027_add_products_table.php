@@ -17,7 +17,7 @@ class AddProductsTable extends Migration
             $table->id();
             $table->text('name');
             $table->text('category');
-            $table->text('subcategory');
+            $table->text('subcategory')->nullable();
             $table->double('price', 6, 2);
             $table->text('about');
             $table->text('details');
