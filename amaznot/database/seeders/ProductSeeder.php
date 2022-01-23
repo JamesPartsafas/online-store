@@ -15,11 +15,11 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $csvFile = fopen(__DIR__ . "\\amazon_clean_mini.csv", "r");
+        $csvFile = fopen(__DIR__ . "/amazon_clean_mini.csv", "r");
 
         $onFirstLine = true;
         $count = 0;
-        while(($data = fgetcsv($csvFile, 6000, ",")) !== false)
+        while(($data = fgetcsv($csvFile, 0, ",")) !== false)
         {
             try
             {
