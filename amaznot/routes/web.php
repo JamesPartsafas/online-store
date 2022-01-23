@@ -18,6 +18,6 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/products', [ListController::class, 'index'])->name('productlist');
+Route::get('/products/{category}', [ListController::class, 'index'])->name('productlist');
 
 Route::get('/products/{category}/{id}', [ProductController::class, 'index'])->name('productpage');

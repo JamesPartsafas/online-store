@@ -27,10 +27,11 @@ class ProductSeeder extends Seeder
                     $onFirstLine = false;
                 else
                 {
-                    echo $count . " / 5863\n";
+                    echo $count . " / 5859\n";
                     $count++;
 
                     $categories = explode("|", $data[1]);
+                    $categories = str_replace('&', 'and', $categories);
                     
                     Product::create([
                         "name" => $data[0],
