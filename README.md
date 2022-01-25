@@ -20,7 +20,7 @@
 Develop an online marketplace 
 
 ## Description
-Amaznot is an e-commerce website where users can order items from a wide selection of products. It was built as as part of the course SOEN 341. It contains many features present in real, production e-commerce websites, such as user log-in, item filtering, and order listing.
+Amaznot is an e-commerce website where users can order items from a wide selection of products. It was built as part of the course SOEN 341. It contains many features present in real, production e-commerce websites, such as user log-in, item filtering, and order listing.
 
 ## Core features
 * Browsing Items
