@@ -2,28 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Database\QueryException;
 
 class ListController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         try 
         {
-            $product = Product::
-                select('id', 'name', 'category', 'subcategory', 'price', 'about', 'details', 'weight', 'image')
-                ->where('id', 1)
-                ->firstOrFail();
+            $category = $request->route('category');
+            $category = urldecode($category);
+            
+            $subcategory = $request->query('subcategory');
+            $subcategory = urldecode($subcategory);
+
+            //Get product list for page
+            $products = Product::
+                select('id', 'name', 'price', 'image')
+                ->where('category', $category)
+                ->when($subcategory, function ($query) use ($subcategory) {
+                    return $query->where('subcategory', $subcategory);
+                })
+                ->paginate(10);
+
+            if ($products->isEmpty())
+                throw new Exception();
+
+            //Get list of subcategories
+            $subcategories = Product::
+                select('subcategory')
+                ->distinct()
+                ->where('category', $category)
+                ->get();
         }
-        catch (QueryException $ex)
+        catch (Exception $ex)
         {
             return abort(404);
         }
 
         return view('pages.productlist', [
-            "product" => $product
+            'products' => $products,
+            'subcategories' => $subcategories
         ]);
     }
 }

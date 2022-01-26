@@ -4,3 +4,8 @@ body {
     font-family: 'Judson', serif;
     color: red;
 }
+
+.w-5 {
+    display: inline-block; /* Used for pagination elements on product list page */
+    width: 15px;
+}
