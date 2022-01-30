@@ -2,6 +2,6 @@
 
 @section('content')
 
-    Welcome to Amaznot!
+    Stuff goes here.
 
 @endsection
