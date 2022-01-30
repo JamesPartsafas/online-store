@@ -9,6 +9,6 @@ class LogoutController extends Controller
     public function store(Request $request)
     {   
         auth()->logout();
-        return ridirect('home');
+        return redirect('home');
     }
 }
