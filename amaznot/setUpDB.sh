@@ -14,7 +14,7 @@ sleep 5
 # Migrate and seed database
 php artisan migrate
 php artisan db:seed --class=ProductSeeder
-
+php artisan db:seed --class=UserSeeder
 
 # Run the following commands to go into psql in docker container
 
