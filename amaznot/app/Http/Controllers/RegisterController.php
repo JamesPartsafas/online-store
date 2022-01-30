@@ -31,7 +31,7 @@ class RegisterController extends Controller
         ]);
 
         // Sign in User
-        auth()->attempt($request-> only('email', 'password'));
+        auth()->attempt($request-> only('name', 'password'));
 
         // Redirect User 
         /* Please notify me which file to is storing the database for the ridirect*/ 
