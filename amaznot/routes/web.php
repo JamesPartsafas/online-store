@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +19,22 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+// Register User
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
+
+// Login User
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
+
+// Logout User
+Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+
+// Home 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Product List
 Route::get('/products/{category}', [ListController::class, 'index'])->name('productlist');
 
+// Product Page
 Route::get('/products/{category}/{id}', [ProductController::class, 'index'])->name('productpage');
