@@ -30,7 +30,7 @@ class LoginController extends Controller
         // Redirect User 
         if(auth()->user()->where('name', 1)->first());
         {
-            return redirect()->route('productlist'); 
+            return redirect()->route('home'); 
         }
         return redirect()->route('home');
     }
