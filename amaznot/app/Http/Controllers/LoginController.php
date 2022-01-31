@@ -28,7 +28,7 @@ class LoginController extends Controller
         }
 
         // Redirect User 
-        if(auth()->user()->where('name', 1)->first());
+        if(auth()->user()->where('name', 'admin')->exist());
         {
             return redirect()->route('home'); 
         }
