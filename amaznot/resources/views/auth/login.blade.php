@@ -20,7 +20,7 @@
 
                 <div>
                     <button type = "submit" class = "bg-blue-500 txt-white px-4 py-3 rounded
-                    font-medium w-full">Log in</button>
+                    font-medium w-full">Login</button>
                 </div>
 
             </form>

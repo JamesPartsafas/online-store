@@ -14,6 +14,7 @@ class UpdateUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->unique('name');
             $table->dropColumn(['email', 'email_verified_at', 'remember_token']);
             $table->string('role');
         });

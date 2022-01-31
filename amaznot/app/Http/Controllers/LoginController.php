@@ -18,20 +18,20 @@ class LoginController extends Controller
         $this->validate($request,
         [
             'name' => 'required',
-            'password' => 'required|confirmed',
+            'password' => 'required',
         ]);
 
         // Sign in User
-        if(!auth()->attempt($request-> only('name', 'password')))
+        if(!auth()->attempt($request->only('name', 'password')))
         {
             return back()->with('status', 'Invalid login details');
         }
 
         // Redirect User 
-        if(auth()->user()->where('name', 'admin')->exist());
+        /*if(auth()->user()->where('name', 'admin')->exist());
         {
             return redirect()->route('home'); 
-        }
+        }*/
         return redirect()->route('home');
     }
 }
