@@ -15,7 +15,7 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $csvFile = fopen(__DIR__ . "/amazon_clean_mini.csv", "r");
+        $csvFile = fopen(__DIR__. "/amazon_clean_mini.csv", "r");
 
         $onFirstLine = true;
         $count = 0;
@@ -32,7 +32,7 @@ class ProductSeeder extends Seeder
 
                     $categories = explode("|", $data[1]);
                     $categories = str_replace('&', 'and', $categories);
-                    
+
                     Product::create([
                         "name" => $data[0],
                         "category" => $categories[0],
@@ -45,7 +45,9 @@ class ProductSeeder extends Seeder
                     ]);
                 }
             }
-            catch (Exception)
+            catch (Exception $e)
+
+
             {
                 //Ignore line
             }
@@ -54,3 +56,5 @@ class ProductSeeder extends Seeder
         fclose($csvFile);
     }
 }
+
+?>
