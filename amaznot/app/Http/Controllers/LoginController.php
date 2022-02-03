@@ -8,6 +8,12 @@ class LoginController extends Controller
 {
     public function index()
     {
+        // Check if user is already signed in
+        if(auth()->check())
+        {
+            return redirect()->route('home');
+        }
+        
         return view('auth.login');
     }
 
@@ -21,17 +27,20 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
+        $credentials = $request->only('name', 'password');
+
         // Sign in User
-        if(!auth()->attempt($request->only('name', 'password')))
+        if(!auth()->attempt($credentials))
         {
             return back()->with('status', 'Invalid login details');
         }
 
         // Redirect User 
-        /*if(auth()->user()->where('name', 'admin')->exist());
+        if(auth()->user()->only('admin')); // HCecks for Admin accounts
         {
             return redirect()->route('home'); 
-        }*/
+        }
+
         return redirect()->route('home');
     }
 }
