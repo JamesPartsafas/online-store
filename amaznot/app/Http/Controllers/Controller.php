@@ -2,12 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected function redirectOnAuthenticated()
+    {
+        if(auth()->check())
+        {
+            return redirect()->route('home');
+        }
+    }
+
+    protected function redirectOnNotAdmin(Request $request)
+    {
+        if(!auth()->check() || $request->user()->role !== 'admin')
+        {
+            return redirect()->route('home');
+        }
+    }
+
+    protected function redirectOnNotUser(Request $request)
+    {
+        if(!auth()->check() || $request->user()->role !== 'user')
+        {
+            return redirect()->route('home');
+        }
+    }
 }
