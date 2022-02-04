@@ -29,15 +29,15 @@ class RegisterController extends Controller
         // Validate
         $this->validate($request,
         [
-            'name' => 'required',
-            'password' => 'required|confirmed',
+            'name' => 'required|unique:users',
+            'password' => 'required|confirmed'
         ]);
 
         // Store new user
         User::create([
-            'name' => $request->name,
+            'name' => $request['name'],
             'role' => 'user',
-            'password' => $request->password,
+            'password' => Hash::make($request['password'])
         ]);
 
         // Sign in User

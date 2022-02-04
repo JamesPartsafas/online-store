@@ -16,9 +16,10 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
-        'name' => 'required|unique:users',
-        'password' => 'required',
-        'role' => 'required',
+        'name',
+        'password',
+        'role',
     ];
 }
