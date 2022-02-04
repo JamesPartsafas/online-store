@@ -42,3 +42,4 @@ Route::get('/products/{category}/{id}', [ProductController::class, 'index'])->na
 
 // Admin Functions
 Route::get('/admin/addproduct', [AdminController::class, 'index'])->name('adminpage');
+Route::post('/admin/addproduct', [AdminController::class, 'store']);

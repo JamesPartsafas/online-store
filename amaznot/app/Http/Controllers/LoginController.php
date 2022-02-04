@@ -8,7 +8,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        if ($redirect = parent::redirectOnUnauthenticated())
+        if ($redirect = parent::redirectOnAuthenticated())
         {
             return $redirect;
         }
@@ -19,7 +19,7 @@ class LoginController extends Controller
     
     public function store(Request $request)
     {   
-        if ($redirect = parent::redirectOnUnauthenticated())
+        if ($redirect = parent::redirectOnAuthenticated())
         {
             return $redirect;
         }

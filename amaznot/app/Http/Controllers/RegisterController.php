@@ -11,7 +11,7 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        if ($redirect = parent::redirectOnUnauthenticated())
+        if ($redirect = parent::redirectOnAuthenticated())
         {
             return $redirect;
         }
@@ -21,7 +21,7 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {   
-        if ($redirect = parent::redirectOnUnauthenticated())
+        if ($redirect = parent::redirectOnAuthenticated())
         {
             return $redirect;
         }
@@ -29,7 +29,7 @@ class RegisterController extends Controller
         // Validate
         $this->validate($request,
         [
-            'name' => 'required|users',
+            'name' => 'required',
             'password' => 'required|confirmed',
         ]);
 

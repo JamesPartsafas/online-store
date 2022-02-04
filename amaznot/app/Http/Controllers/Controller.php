@@ -12,7 +12,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected function redirectOnUnauthenticated()
+    protected function redirectOnAuthenticated()
     {
         if(auth()->check())
         {
@@ -23,6 +23,14 @@ class Controller extends BaseController
     protected function redirectOnNotAdmin(Request $request)
     {
         if(!auth()->check() || $request->user()->role !== 'admin')
+        {
+            return redirect()->route('home');
+        }
+    }
+
+    protected function redirectOnNotUser(Request $request)
+    {
+        if(!auth()->check() || $request->user()->role !== 'user')
         {
             return redirect()->route('home');
         }
