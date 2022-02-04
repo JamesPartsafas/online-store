@@ -11,11 +11,21 @@ class RegisterController extends Controller
 {
     public function index()
     {
+        if ($redirect = parent::redirectOnUnauthenticated())
+        {
+            return $redirect;
+        }
+
         return view('auth.register');
     }
 
     public function store(Request $request)
     {   
+        if ($redirect = parent::redirectOnUnauthenticated())
+        {
+            return $redirect;
+        }
+
         // Validate
         $this->validate($request,
         [

@@ -8,10 +8,9 @@ class LoginController extends Controller
 {
     public function index()
     {
-        // Check if user is already signed in
-        if(auth()->check())
+        if ($redirect = parent::redirectOnUnauthenticated())
         {
-            return redirect()->route('home');
+            return $redirect;
         }
         
         return view('auth.login');
@@ -20,6 +19,11 @@ class LoginController extends Controller
     
     public function store(Request $request)
     {   
+        if ($redirect = parent::redirectOnUnauthenticated())
+        {
+            return $redirect;
+        }
+
         // Validate
         $this->validate($request,
         [
@@ -33,12 +37,6 @@ class LoginController extends Controller
         if(!auth()->attempt($credentials))
         {
             return back()->with('status', 'Invalid login details');
-        }
-
-        // Redirect User 
-        if(auth()->user()->only('admin')); // HCecks for Admin accounts
-        {
-            return redirect()->route('home'); 
         }
 
         return redirect()->route('home');

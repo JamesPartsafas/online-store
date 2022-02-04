@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,6 @@ Route::get('/products/{category}', [ListController::class, 'index'])->name('prod
 
 // Product Page
 Route::get('/products/{category}/{id}', [ProductController::class, 'index'])->name('productpage');
+
+// Admin Functions
+Route::get('/admin/addproduct', [AdminController::class, 'index'])->name('adminpage');
