@@ -1,48 +1,42 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class = "flex justify-center">
-        <div class = "w-4/12 bg white p-6 rounded-lg">
-            <form action = "{{ route('register')}}" method = "post">
-                @csrf
+    <div class = "text-center">
+        <form action = "{{ route('register')}}" method = "post" style="max-width:480px;margin:auto;">
+            <img src="{{ asset('assets/amaznot.ico') }}" alt="logo">
 
-                <div class = "mb-4">
-                    <label for = "name" class = "sr-only">Name</label>
-                    <input type = "text" name = "name" id = "name"  placeholder = "Your Name"
-                    class = "bg-gray-100 border-2 w-full p-4 rounded-lg" value ="{{ old('name') }}">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Register
+            </h1>
 
-                    @error('name')
-                        {{ $message }}
-                    @enderror
-                </div>
+            <div class="mb-4">
+                <label for="name" class="sr-only">Name</label>
+                <input type="text" name="name" id="name" placeholder = "Name"
+                class="form-control" value="">
+            </div>
 
-                <div class = "mb-4">
-                    <label for = "password" class = "sr-only">Password</label>
-                    <input type = "password" name = "password" id = "password"  placeholder = "Enter your Password"
-                    class = "bg-gray-100 border-2 w-full p-4 rounded-lg" value ="">
+            <div class="mb-4">
+                <label for="email" class="sr-only">Email</label>
+                <input type="text" name="email" id="email" placeholder = "Email"
+                class="form-control" value="">
+            </div>
 
-                    @error('password')
-                        {{ $message }}
-                    @enderror
-                </div>
+            <div class="mb-4">
+                <label for="password" class="sr-only">Email</label>
+                <input type="password" name="password" id="password" placeholder = "Password"
+                class="form-control" value="">
+            </div>
 
-                <div class = "mb-4">
-                    <label for = "password_confirmation" class = "sr-only">Confirm Password</label>
-                    <input type = "password" name = "password_confirmation" id = "password_confirmation"  placeholder = "Confirm your Password"
-                    class = "bg-gray-100 border-2 w-full p-4 rounded-lg" value ="">
+            <div class="mb-4">
+                <label for="password_confirmation" class="sr-only">Confirm Password</label>
+                <input type="password_confirmation" name="password_confirmation" id="password_confirmation" placeholder = "Confirm Password"
+                class="form-control" value="">
+            </div>
 
-                    @error('password_confirmation')
-                        {{ $message }}
-                    @enderror
-                </div>
-
-                <div>
-                    <button type = "submit" class = "bg-blue-500 txt-white px-4 py-3 rounded
-                    font-medium w-full">Register</button>
-                </div>
-            </form>
-        </div>
+            <div>
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
+            </div>
+        </form><br/>
+        <p>Already have an account? <a href="{{ route('login') }}">Login</a></p>
     </div>
-
-
 @endsection
