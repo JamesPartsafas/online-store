@@ -37,7 +37,7 @@
 
             <div class="mb-4">
                 <label for="password_confirmation" class="sr-only">Confirm Password</label>
-                <input type="password_confirmation" name="password_confirmation" id="password_confirmation" placeholder = "Confirm Password"
+                <input type="password" name="password_confirmation" id="password_confirmation" placeholder = "Confirm Password"
                 class="form-control @error('password_confirmation') border-danger @enderror" value="">
             </div>
 
