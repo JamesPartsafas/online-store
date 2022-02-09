@@ -32,14 +32,19 @@ class ProductSeeder extends Seeder
 
                     $categories = explode("|", $data[1]);
                     $categories = str_replace('&', 'and', $categories);
+                    $about = str_replace('|', ' ', $data[3]);
+                    $details = str_replace('|', ' ', $data[4]);
+                  
+                  
+
 
                     Product::create([
                         "name" => $data[0],
                         "category" => $categories[0],
                         "subcategory" => $categories[1],
                         "price" => $data[2],
-                        "about" => $data[3],
-                        "details" => $data[4],
+                        "about" => $about,
+                        "details" =>$details,
                         "weight" => $data[5],
                         "image" => $data[6]
                     ]);
