@@ -5,7 +5,7 @@
 @section('content')
 
     {{-- {{ $product }} --}}
-  
+
     <script>
         function modify(target,state)
             {
@@ -42,7 +42,6 @@
  // }
   //window.onload= display();  
     </script>
-  
    <div class="box-wrapper row mt-5" style="margin-left:3%;margin-top:relative;">
   <div class="row">
    <div class="col" > 
@@ -97,7 +96,7 @@
 <div class="column-bestsellers Description">
     <div class="content-bestsellers" style="width:700px;margin-left:-5%;">
      
-     <p class="card-text"> <?php echo nl2br("\n");  ?>{{$product['about'] }}</p>
+     <p class="card-text"> <?php echo nl2br("\n");  ?>{{ str_replace('|', ' ', $product['about']);  }}</p>
     </div>
   </div>
   <div class="column-bestsellers Details">
@@ -108,7 +107,7 @@
      <?php
    echo nl2br("\n"); 
           ?>
-    {{ $product['details'] }}
+    {{ str_replace('|', ' ', $product['details']); }}
      <?php
    echo nl2br("\n"); 
   ?>
@@ -119,26 +118,6 @@
 </div>
  </div> 
    
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-    
-    
-    
-
-
-
     {{-- <ul>
         @foreach($products as $product)
             <li>{{ $product['image'] }}</li>
