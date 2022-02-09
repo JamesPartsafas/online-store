@@ -23,9 +23,16 @@ class ProductController extends Controller
         {
             return abort(404);
         }
+        
+        $userCanAddToCart = false;
+        if (!parent::redirectOnNotUser($request))
+        {
+            $userCanAddToCart = true;
+        }
 
         return view('pages.productpage', [
-            'product' => $product
+            'product' => $product,
+            'userCanAddToCart' => $userCanAddToCart
         ]);
     }
 }

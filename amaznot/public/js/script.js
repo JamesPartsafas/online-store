@@ -47,3 +47,60 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
+
+//Common logic for cart
+
+const addToCart = (id, screenUpdateCallback) => {
+  const value = document.getElementById(id).value
+  let cart = JSON.parse(localStorage.getItem('cart'))
+  if (cart == null)
+    cart = []
+  
+  let cartItem = {id: id, amount: value}
+  let index = cart.findIndex(element => element.id == id)
+  
+  if (index == -1)
+    cart.push(cartItem)
+  else {
+    console.log(index)
+    cart[index] = cartItem
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart))
+  
+  screenUpdateCallback(id)
+};
+
+const removeFromCart = (id, screenUpdateCallback) => {
+  const cart = JSON.parse(localStorage.getItem('cart'))
+  if (cart == null)
+    return
+
+  const filteredCart = cart.filter((element) => {
+    if (element.id !== id)
+      return element
+  })
+
+  localStorage.setItem('cart', JSON.stringify(filteredCart))
+
+  screenUpdateCallback(id)
+};
+
+const decrement = (id) => {
+  let value = document.getElementById(id).value
+
+  if (value <= 0)
+    return
+
+  value--
+  document.getElementById(id).value = value
+};
+
+const increment = (id) => {
+  let value = document.getElementById(id).value
+
+  value++
+  document.getElementById(id).value = value
+};
+
+//End cart logic
