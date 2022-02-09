@@ -32,6 +32,9 @@
     <!--EXTERNAL SCRIPTS-->
     <script defer src="/js/script.js"></script>
 
+    <!--FAVICON-->
+    <link rel="icon" type="image/x-icon" href="{{url('/assets/amaznot.ico')}}">
+
     <!--SMOOTH SCROLLING CROSS-BROWSER-->
     <script>
       $(document).ready(function(){
@@ -62,10 +65,8 @@
 
 </head>
 <body>
-    <!--MENU-->
-    <!--END MENU-->
-
-    <!--HEADER-->
+    <!--HEADER/MENU BAR-->
+    <div class="row justify-content-center">header and/or menu bar goes here, just delete this</div>
     <!--END HEADER-->
 
     <!--CONTENT-->
@@ -74,6 +75,7 @@
 
     <!--FOOTER-->
     <footer>
+    <div class="row justify-content-center">footer goes here, just delete this</div>
     </footer>
     <!--END FOOTER-->
   </div>
