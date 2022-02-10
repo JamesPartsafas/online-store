@@ -62,7 +62,6 @@ const addToCart = (id, screenUpdateCallback) => {
   if (index == -1)
     cart.push(cartItem)
   else {
-    console.log(index)
     cart[index] = cartItem
   }
 
