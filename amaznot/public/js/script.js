@@ -50,13 +50,19 @@ for (var i = 0; i < btns.length; i++) {
 
 //Common logic for cart
 
-const addToCart = (id, screenUpdateCallback) => {
+const addToCart = (id, productName, price, image, screenUpdateCallback) => {
   const value = document.getElementById(id).value
   let cart = JSON.parse(localStorage.getItem('cart'))
   if (cart == null)
     cart = []
   
-  let cartItem = {id: id, amount: value}
+  let cartItem = {
+    id: id, 
+    amount: value,
+    name: productName,
+    price: price,
+    image: image
+  }
   let index = cart.findIndex(element => element.id == id)
   
   if (index == -1)
