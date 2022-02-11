@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="/css/styles.css">
 
     <!--EXTERNAL SCRIPTS-->
-    <script src="/js/script.js"></script>
+    <script defer src="/js/script.js"></script>
 
     <!--SMOOTH SCROLLING CROSS-BROWSER-->
     <script>
