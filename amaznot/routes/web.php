@@ -36,6 +36,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Product List
 Route::get('/products/{category}', [ListController::class, 'index'])->name('productlist');
+Route::get('/products/{category}?subcategory={subcategory}', [ListController::class, 'index'])->name('productsubcatlist');
 
 // Product Page
 Route::get('/products/{category}/{id}', [ProductController::class, 'index'])->name('productpage');

@@ -111,3 +111,57 @@ h1 {
     display: inline-block; /* Used for pagination elements on product list page */
     width: 15px;
 }
+
+
+/* Product List Styles*/
+.subcategory .icon-box {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .subcategory .title {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 18px;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  
+.subcategory .title a:hover {
+    color: #3fbbc0;
+  }
+  .subcategory .title::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: #3fbbc0;
+    bottom: 0;
+    left: calc(50% - 25px);
+  }
+  .subcategory .title {
+    line-height: 24px;
+    font-size: 20px;
+  }
+  #subcategory {
+    padding: 60px 0;
+    overflow: hidden;
+  }
+  
+  .section-bg {
+    background-color:grey;
+  }
+  
+  .section-title {
+    text-align: center;
+    padding-top: 25px;
+  }
+  .section-title h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+  }

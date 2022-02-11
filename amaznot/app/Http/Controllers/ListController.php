@@ -20,7 +20,7 @@ class ListController extends Controller
 
             //Get product list for page
             $products = Product::
-                select('id', 'name', 'price', 'image')
+                select('id', 'name', 'price', 'image', 'category')
                 ->where('category', $category)
                 ->when($subcategory, function ($query) use ($subcategory) {
                     return $query->where('subcategory', $subcategory);
