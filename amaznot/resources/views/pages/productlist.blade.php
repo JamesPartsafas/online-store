@@ -23,13 +23,10 @@
                     <div class="box-item">
                         <?php 
                         $category="";
-                                // foreach($products as $product){
-                                //     $category= $product['category'];
-                                // }
                         $category=$products[0]['category'];
                         ?>
                         <a href=" {{ route('productsubcatlist', ['category' => $category, 'subcategory' => $subcategory['subcategory']]) }}">
-                            <h4 class="title"> {{ $subcategory['subcategory'] }} </h4>  <!--Removed <li></li>-->
+                            <h4 class="title" style="color: black;"> {{ $subcategory['subcategory'] }} </h4>  <!--Removed <li></li>-->
                         </a>
                     </div>  
                 </div>
@@ -50,7 +47,7 @@
                 <div class="col-md-4 icon-box" aria-hidden="true" tabindex="0">
                     <div class="box-item">
                         <a href="{{ route('productpage', ['category' => $category, 'id' => $product['id']]) }}">
-                            <h4 class="title">{{ $product['name'] }}</h4> <!--Removed <li></li>-->
+                            <h4 class="title" style="color: black;">{{ $product['name'] }}</h4> 
                             <img src="{{ $product['image'] }}" style="width: 50%; height: 50%">
                         </a>
                     </div>  
