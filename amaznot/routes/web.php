@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\AdminController;
@@ -44,3 +45,6 @@ Route::get('/products/{category}/{id}', [ProductController::class, 'index'])->na
 // Admin Functions
 Route::get('/admin/addproduct', [AdminController::class, 'index'])->name('adminpage');
 Route::post('/admin/addproduct', [AdminController::class, 'store']);
+
+// Cart Page
+Route::get('/cart', [CartController::class, 'index'])->name('cart');

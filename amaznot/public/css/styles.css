@@ -129,3 +129,21 @@ h1 {
     padding-bottom: 20px;
     position: relative;
   }
+
+/* Cart Page */
+.cart-items {
+  width: 80%;
+  margin: auto;
+}
+
+#cart-holder, #price-holder {
+  border: 2px solid black;
+  border-radius: 6px;
+  margin: 30px 10px;
+}
+
+#price-holder {
+  font-size: 20px;
+  padding: 20px;
+}
+/* End cart page */
