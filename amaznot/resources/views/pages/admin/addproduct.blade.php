@@ -1,106 +1,111 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class = "flex justify-center">
-        <div class = "w-4/12 bg-white p-6 rounded-lg">
+    <div class = "text-center mt-3 mb-3">
+        @isset($customMessage)
+            {{ $customMessage }}
+        @endisset
 
-            @isset($customMessage)
-                {{ $customMessage }}
-            @endisset
+        <h1 class="h3 mb-3 font-weight-normal">
+            Add Product
+        </h1>
 
-            <form action = "{{ route('adminpage') }}" method = "post">
-                @csrf
+        <form action = "{{ route('adminpage') }}" method = "post" style="max-width:480px;margin:auto;">
+            @csrf
 
-                <div class = "mb-4">
-                    <label for = "name" class = "sr-only">Name</label>
-                    <input type = "text" name = "name" id = "name"  placeholder = "Product Name"
-                    class = "bg-gray-100 border-2 w-full p-4 rounded-lg" value ="{{ old('name') }}">
-
-                    @error('name')
-                        {{ $message }}
-                    @enderror
+            @error('name')
+                <div class="text-danger">
+                    {{ $message }}
                 </div>
+            @enderror
+            <div class = "form-group">
+                <input type = "text" name = "name" id = "name"  placeholder = "Product Name"
+                class = "form-control @error('name') border-danger @enderror" value ="{{ old('name') }}">
+            </div>
 
-                <div class = "mb-4">
-                    <label for = "category" class = "sr-only">Category</label>
-                    <select name="category">
-                        @foreach($categories as $category)
-                            <option value={{ urlencode($category['category']) }}>{{ $category['category'] }}</option>
-                        @endforeach
-                    </select>
-
-                    @error('category')
-                        {{ $message }}
-                    @enderror
+            @error('category')
+                <div class="text-danger">
+                    {{ $message }}
                 </div>
+            @enderror
+            <div class = "form-group">
+                <select name="category" class = "form-control @error('category') border-danger @enderror">
+                    <option disabled selected value>Product Category</option>
+                    @foreach($categories as $category)
+                        <option value={{ urlencode($category['category']) }}>{{ $category['category'] }}</option>
+                    @endforeach
+                </select>
+            </div>
 
-                <div class = "mb-4">
-                    <label for = "subcategory" class = "sr-only">Subcategory</label>
-                    <input type = "text" name = "subcategory" id = "subcategory"  placeholder = "Product Subcategory"
-                    class = "bg-gray-100 border-2 w-full p-4 rounded-lg" value ="{{ old('subcategory') }}">
-
-                    @error('subcategory')
-                        {{ $message }}
-                    @enderror
+            @error('subcategory')
+                <div class="text-danger">
+                    {{ $message }}
                 </div>
+            @enderror
+            <div class = "form-group">
+                <input type = "text" name = "subcategory" id = "prodsubcategory"  placeholder = "Product Subcategory"
+                class = "form-control @error('subcategory') border-danger @enderror" value ="{{ old('subcategory') }}">
+            </div>
 
-                <div class = "mb-4">
-                    <label for = "price" class = "sr-only">Price</label>
-                    <input type = "text" name = "price" id = "price"  placeholder = "Product Price"
-                    class = "bg-gray-100 border-2 w-full p-4 rounded-lg" value ="{{ old('price') }}">
-
-                    @error('price')
-                        {{ $message }}
-                    @enderror
+            @error('price')
+                <div class="text-danger">
+                    {{ $message }}
                 </div>
+            @enderror
+            <div class = "form-group">
+                <input type = "text" name = "price" id = "price"  placeholder = "Product Price"
+                class = "form-control @error('price') border-danger @enderror" value ="{{ old('price') }}">
 
-                <div class = "mb-4">
-                    <label for = "about" class = "sr-only">About</label>
-                    <input type = "text" name = "about" id = "about"  placeholder = "Product About Information"
-                    class = "bg-gray-100 border-2 w-full p-4 rounded-lg" value ="{{ old('about') }}">
+            </div>
 
-                    @error('about')
-                        {{ $message }}
-                    @enderror
+            @error('about')
+                <div class="text-danger">
+                    {{ $message }}
                 </div>
+            @enderror
+            <div class = "form-group">
+                <input type = "text" name = "about" id = "about"  placeholder = "Product About Information"
+                class = "form-control @error('about') border-danger @enderror" value ="{{ old('about') }}">
 
-                <div class = "mb-4">
-                    <label for = "details" class = "sr-only">Details</label>
-                    <input type = "text" name = "details" id = "details"  placeholder = "Product Details"
-                    class = "bg-gray-100 border-2 w-full p-4 rounded-lg" value ="{{ old('details') }}">
+            </div>
 
-                    @error('details')
-                        {{ $message }}
-                    @enderror
+            @error('details')
+                <div class="text-danger">
+                    {{ $message }}
                 </div>
+            @enderror
+            <div class = "form-group">
+                <input type = "text" name = "details" id = "details"  placeholder = "Product Details"
+                class = "form-control @error('details') border-danger @enderror" value ="{{ old('details') }}">
 
-                <div class = "mb-4">
-                    <label for = "weight" class = "sr-only">Weight</label>
-                    <input type = "text" name = "weight" id = "weight"  placeholder = "Product Weight"
-                    class = "bg-gray-100 border-2 w-full p-4 rounded-lg" value ="{{ old('weight') }}">
+            </div>
 
-                    @error('weight')
-                        {{ $message }}
-                    @enderror
+            @error('weight')
+                <div class="text-danger">
+                    {{ $message }}
                 </div>
+            @enderror
+            <div class = "form-group">
+                <input type = "text" name = "weight" id = "weight"  placeholder = "Product Weight"
+                class = "form-control @error('weight') border-danger @enderror" value ="{{ old('weight') }}">
 
-                <div class = "mb-4">
-                    <label for = "image" class = "sr-only">Image</label>
-                    <input type = "text" name = "image" id = "image"  placeholder = "Product Image Link"
-                    class = "bg-gray-100 border-2 w-full p-4 rounded-lg" value ="{{ old('image') }}">
+            </div>
 
-                    @error('image')
-                        {{ $message }}
-                    @enderror
+            @error('image')
+                <div class="text-danger">
+                    {{ $message }}
                 </div>
+            @enderror
+            <div class = "form-group">
+                <input type = "text" name = "image" id = "image"  placeholder = "Product Image Link"
+                class = "form-control @error('image') border-danger @enderror" value ="{{ old('image') }}">
+            </div>
 
-                <div>
-                    <button type = "submit" class = "bg-blue-500 txt-white px-4 py-3 rounded
-                    font-medium w-full">Add Product</button>
-                </div>
+            <div>
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Add Product</button>
+            </div>
 
             </form>
-        </div>
     </div>
 
 
