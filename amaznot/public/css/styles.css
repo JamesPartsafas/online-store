@@ -50,10 +50,14 @@ body, html {
 
 .controller-link {
   font-size: 1.2rem;
+  background-color: transparent;
+  border: transparent;
+  outline: none;
 }
 
 .controller-link:hover {
   color: black;
+  text-decoration: underline;
 }
 
 .controller-link .fas {

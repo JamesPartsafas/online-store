@@ -96,12 +96,22 @@
       </div>
       <div class="controller-container div-inline">
         <div class="profile div-inline mr-4">
+          @if(Illuminate\Support\Facades\Auth::check())
+          <form action="{{ route('logout') }}" method="post">
+            @csrf
+            <button type="submit" class="controller-link">
+              <i class="fas fa-sign-out-alt"></i>
+              Logout
+            </button>
+          </form>
+          @else
           <a class="controller-link" href="{{ route('login') }}">
             <i class="fas fa-user"></i>
             Login
           </a>
+          @endif
         </div>
-        @if(Illuminate\Support\Facades\Auth::check())
+        @if(Illuminate\Support\Facades\Auth::check() && !Illuminate\Support\Facades\Auth::user()->isAdmin())
         <div class="profile div-inline">
           <a class="controller-link" href="{{ route('cart') }}">
             <i class="fas fa-shopping-cart"></i>
@@ -111,6 +121,13 @@
         <p class="controller-total-price">
           $ 0.00
         </p>
+        @elseif(Illuminate\Support\Facades\Auth::check() && Illuminate\Support\Facades\Auth::user()->isAdmin())
+        <div class="profile div-inline">
+          <a class="controller-link" href="{{route('adminpage')}}">
+            <i class="fa-solid fa-user-gear"></i>
+            Admin Page
+          </a>
+        </div>
         @endif
       </div>
     </div>
@@ -143,10 +160,7 @@
                     $data = array_unique($data);
                     @endphp
                     @foreach ($data as $cat)
-                    @php
-                    $catURL = "https://".$_SERVER['SERVER_NAME']."/products/".$cat;
-                    @endphp
-                    <a class="category-item-title" href="<?php echo $catURL ?>">
+                    <a class="category-item-title" href="{{ URL::to('products/' . $cat) }}">
                       {{$cat}}
                     </a>
                     @endforeach
@@ -159,10 +173,7 @@
                     $subcat = array_filter($headerData['array'], fn($sub) => strcmp($sub['category'], 'Toys and Games') === 0);
                     @endphp
                     @foreach ($subcat as $sub)
-                    @php
-                    $subURL = "https://".$_SERVER['SERVER_NAME']."/products/Toys%20and%20Games?subcategory=".str_replace(" ","%20",$sub['subcategory']);
-                    @endphp
-                    <a class="category-item-link" href="<?php echo e($subURL) ?>">{{$sub['subcategory']}}</a>
+                    <a class="category-item-link" href="{{ URL::to('products/Toys%20and%20Games?subcategory=' . $sub['subcategory']) }}">{{$sub['subcategory']}}</a>
                     @endforeach
                   </div>
                 </div>
@@ -178,9 +189,13 @@
               <a class="nav-link" href="{{ route('login') }}">Login</a>
               @endif
             </li>
-            @if(Illuminate\Support\Facades\Auth::check())
+            @if(Illuminate\Support\Facades\Auth::check() && !Illuminate\Support\Facades\Auth::user()->isAdmin())
             <li class="nav-item small-screen">
               <a class="nav-link" href="{{ route('cart') }}">Shopping Cart</a>
+            </li>
+            @elseif(Illuminate\Support\Facades\Auth::check() && Illuminate\Support\Facades\Auth::user()->isAdmin())
+            <li class="nav-item small-screen">
+              <a class="nav-link" href="{{route('adminpage')}}">Admin Page</a>
             </li>
             @endif
             <li class="nav-item dropdown small-screen">
