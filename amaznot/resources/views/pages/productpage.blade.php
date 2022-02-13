@@ -14,16 +14,26 @@
  
   <div class="col" style="margin-left:2%;margin-top:relative;">
 <div class="card text-dark bg-light " style="max-width: 38rem;max-height:18rem;">
-  <div class="card-body" >
-     <strong>{{ $product['name'] }}</strong>  <?php echo nl2br("\n"); ?>
+  <div class="card-body" > 
+  <div class="alert alert-light" role="alert">
+     <strong>{{ $product['name'] }}</strong>  <?php echo nl2br("\n"); ?>  
+   </div>
+   <div style= "margin-left:3.5%;">
     <?php echo "Price:"; ?> {{  $product['price'] }} <?php echo "$"; ?>
-     <?php echo nl2br("\n"); ?>   <?php echo "Weight:"; ?>{{ $product['weight'] }}
 
+     <?php echo nl2br("\n"); ?>   <?php echo "Weight:"; ?>{{ $product['weight'] }}
+     
+
+     <?php echo nl2br("\n"); ?>   <?php echo "Weight: "; ?>{{ $product['weight'] }}<?php echo nl2br("\n"); ?> <?php echo nl2br("\n"); ?> 
+</div>
 @if (!$userCanAddToCart)
     {{ $userCanAddToCart }}
-    <p>Please login to add items to your cart</p>
+    <div class="alert alert-warning" role="alert">
+    Please login to add items to your cart
+    </div>
 @else
   <form  method='post'>
+   <div style= "margin-left:3.5%;">
     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
     
       <div id='add-controls'>
@@ -59,14 +69,14 @@
   </form>
 @endif
 
-
-
-
 </div>
 
 </div>
 </div>
 </div>
+</div>
+
+
 
 
    

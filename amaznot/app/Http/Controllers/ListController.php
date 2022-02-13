@@ -25,7 +25,7 @@ class ListController extends Controller
                 ->when($subcategory, function ($query) use ($subcategory) {
                     return $query->where('subcategory', $subcategory);
                 })
-                ->paginate(10);
+                ->paginate(12);
 
             if ($products->isEmpty())
                 throw new Exception();
