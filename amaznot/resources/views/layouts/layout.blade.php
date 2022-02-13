@@ -9,9 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="{{url('assets/amaznot.ico')}}" />
-
   <!--BOOTSTRAP-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
@@ -30,14 +27,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/solid.min.js"></script>
 
-    <!--EXTERNAL SCRIPTS-->
-    <script defer src="/js/script.js"></script>
-
-    <!--FAVICON-->
-    <link rel="icon" type="image/x-icon" href="{{url('/assets/amaznot.ico')}}">
-
   <!--EXTERNAL SCRIPTS-->
-  <script src="/js/script.js"></script>
+  <script defer src="/js/script.js"></script>
+
+  <!--FAVICON-->
+  <link rel="icon" type="image/x-icon" href="{{url('/assets/amaznot.ico')}}">
 
   <!--SMOOTH SCROLLING CROSS-BROWSER-->
   <script>
