@@ -41,13 +41,19 @@
 <div class="container align-middle mt-3 mb-3">
 @foreach($products->chunk(3) as $chunk)
    <div class="row container justify-content-center">
-       @foreach($chunk as $product)
+      @foreach($chunk as $product)
         <div class="col-md-4 text-center my-auto">
           <a href="{{ route('productpage', ['category' => $product['category'], 'id' => $product['id']]) }}">
-          <img src=" {{ $product['image'] }}" style="max-height:300px; max-width:300px"><br/>
-          {!! Str::limit($product['name'], 100) !!} <br />
-          <i class="fas fa-star rating"></i><i class="fas fa-star rating"></i><i class="fas fa-star rating"></i><i class="fas fa-star rating"></i><i class="far fa-star"></i><br />
-          ${{ $product['price'] }}
+            <img src=" {{ $product['image'] }}" style="max-height:300px; max-width:300px"><br/>
+          </a>
+        </div>
+      @endforeach
+      @foreach($chunk as $product)
+        <div class="col-md-4 text-center my-auto">
+          <a href="{{ route('productpage', ['category' => $product['category'], 'id' => $product['id']]) }}">
+            {!! Str::limit($product['name'], 100) !!} <br />
+            <i class="fas fa-star rating"></i><i class="fas fa-star rating"></i><i class="fas fa-star rating"></i><i class="fas fa-star rating"></i><i class="far fa-star"></i><br />
+            ${{ $product['price'] }}
           </a>  
         </div>
        @endforeach

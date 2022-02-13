@@ -1,7 +1,7 @@
 /* Here goes all our CSS */
 
 body {
-    font-family: 'Judson', 'Archivo Black', serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body, html {
@@ -18,17 +18,22 @@ i.rating {
   font-size: 1em;
 }
 
-h1 {
-    font-size: 50px;
-    word-break: break-all;
+h1, h4 {
+  color:  #333;
+  font-family: 'Work Sans', sans-serif;
+  word-wrap: break-word;
+}
+
+a {
+  color:  #00004d;
+}
+
+a:active {
+  color: darkcyan;
 }
 
 /*BEST SELLERS SECTION*/
 /* padding b/w rows */
-.row-bestsellers {
-  margin: 8px -16px;
-}
-
 .row-bestsellers,
 .row-bestsellers > .column-bestsellers {
     padding: 8px;

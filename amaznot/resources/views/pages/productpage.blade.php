@@ -70,39 +70,37 @@
 
 
    
- <div class="box-wrapper row mt-5" style="margin-left:3%;margin-top:relative;">
-      <div class="card text-dark bg-light " style="width:62.5rem;" >
-  <div class="card-body">
-  <div id="myBtnContainer">
-    <button class="btn-bestsellers" onclick="filterSelection('Description')"> Description</button>  
-    <button class="btn-bestsellers" onclick="filterSelection('Details')"> Details</button>
-</div>
-    
-<div class="row-bestsellers"> 
-<div class="column-bestsellers Description">
-    <div class="content-bestsellers" style="width:700px;margin-left:-5%;">
-     
-     <p class="card-text"> <?php echo nl2br("\n");  ?>{{ str_replace('|', ' ', $product['about']);  }}</p>
-    </div>
-  </div>
-  <div class="column-bestsellers Details">
-    <div class="content-bestsellers" style="width:700px;margin-left:-5%;">
-      
-      <p class="card-text"> 
+<div class="box-wrapper row mt-5" style="margin-left:3%;margin-top:relative;">
+  <div class="card text-dark bg-light " style="width:62.5rem;" >
+    <div class="card-body">
+  
+      <div id="myBtnContainer">
+        <button class="btn-bestsellers" onclick="filterSelection('Description')"> Description</button>  
+        <button class="btn-bestsellers" onclick="filterSelection('Details')"> Details</button>
+      </div>
 
-     <?php
-   echo nl2br("\n"); 
-          ?>
-    {{ str_replace('|', ' ', $product['details']); }}
-     <?php
-   echo nl2br("\n"); 
-  ?>
-  </p>
+      <div class="row-bestsellers"> 
+        <div class="column-bestsellers Description">
+          <div class="content-bestsellers" style="width:700px;margin-left:-5%;">
+            <p class="card-text"> 
+              <?php echo nl2br("\n");  ?>{{ str_replace('|', ' ', $product['about']);  }}
+            </p>
+          </div>
+        </div>
+        <div class="column-bestsellers Details">
+          <div class="content-bestsellers" style="width:700px;margin-left:-5%;">
+            <p class="card-text"> 
+              <?php echo nl2br("\n"); ?>
+              {{ str_replace('|', ' ', $product['details']); }}
+              <?php echo nl2br("\n"); ?>
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </div>
-  </div>
+  </div> 
 </div>
- </div> 
 
 <script>
   const renderScreen = (id) => {

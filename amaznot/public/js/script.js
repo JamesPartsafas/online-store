@@ -1,7 +1,7 @@
 //Here goes all our JavaScript scripts
 
 //TABBED PORTFOLIO
-filterSelection("all") // Execute the function and show all columns
+filterSelection("Description") // Execute the function and show all columns
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("column-bestsellers");
