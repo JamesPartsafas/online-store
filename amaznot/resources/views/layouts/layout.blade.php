@@ -66,7 +66,6 @@
 </head>
 <body>
     <!--HEADER/MENU BAR-->
-    <div class="row justify-content-center">header and/or menu bar goes here, just delete this</div>
     <!--END HEADER-->
 
     <!--CONTENT-->
@@ -75,7 +74,6 @@
 
     <!--FOOTER-->
     <footer>
-    <div class="row justify-content-center">footer goes here, just delete this</div>
     </footer>
     <!--END FOOTER-->
   </div>

@@ -1,16 +1,21 @@
 /* Here goes all our CSS */
 
 body {
-    font-family: 'Judson', serif;
+    font-family: 'Judson', 'Archivo Black', serif;
 }
-
 
 body, html {
     height: 100%;
 }
 
-i.fas {
+i.symbols {
+  color: tomato;
     font-size: 3em;
+}
+
+i.rating {
+  color:gold; 
+  font-size: 1em;
 }
 
 h1 {
@@ -18,12 +23,12 @@ h1 {
     word-break: break-all;
 }
 
-.row {
-    margin: 8px -16px;
-}
-
 /*BEST SELLERS SECTION*/
 /* padding b/w rows */
+.row-bestsellers {
+  margin: 8px -16px;
+}
+
 .row-bestsellers,
 .row-bestsellers > .column-bestsellers {
     padding: 8px;
@@ -37,7 +42,7 @@ h1 {
 }
 
 /* float every after a row */
-.row:after {
+.row-bestsellers:after {
     content: "";
     display: table;
     clear: both;
