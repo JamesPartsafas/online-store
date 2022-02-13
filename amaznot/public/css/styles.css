@@ -1,9 +1,8 @@
 /* Here goes all our CSS */
 
 body {
-  font-family: 'Judson', serif;
+    font-family: 'Open Sans', sans-serif;
 }
-
 
 body, html {
   height: 100%;
@@ -221,17 +220,28 @@ body, html {
   color: white;
 }
 
-i.fas {
-  font-size: 3em;
+i.symbols {
+  color: tomato;
+    font-size: 3em;
 }
 
-h1 {
-  font-size: 50px;
-  word-break: break-all;
+i.rating {
+  color:gold; 
+  font-size: 1em;
 }
 
-.row {
-  margin: 8px -16px;
+h1, h4 {
+  color:  #333;
+  font-family: 'Work Sans', sans-serif;
+  word-wrap: break-word;
+}
+
+a {
+  color:  #00004d;
+}
+
+a:active {
+  color: darkcyan;
 }
 
 /*BEST SELLERS SECTION*/
@@ -250,10 +260,10 @@ h1 {
 }
 
 /* float every after a row */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.row-bestsellers:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .content-bestsellers {
