@@ -155,6 +155,11 @@ body, html {
   position: relative;
 }
 
+.nav-form {
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (min-width: 992px) {
 
 
@@ -277,6 +282,7 @@ h1 {
   background-color: #666;
   color: white;
 }
+
 /*END BEST SELLERS SECTION*/
 
 .w-5 {
@@ -396,19 +402,21 @@ h1 {
   .footer-desc {
     width: 100%;
   }
+
   #subcategory {
     padding: 60px 0;
     overflow: hidden;
   }
-  
+
   .section-bg {
-    background-color:grey;
+    background-color: grey;
   }
-  
+
   .section-title {
     text-align: center;
     padding-top: 25px;
   }
+
   .section-title h2 {
     font-size: 32px;
     font-weight: bold;
@@ -417,6 +425,7 @@ h1 {
     padding-bottom: 20px;
     position: relative;
   }
+}
 
 /* Cart Page */
 .cart-items {
@@ -434,4 +443,5 @@ h1 {
   font-size: 20px;
   padding: 20px;
 }
+
 /* End cart page */

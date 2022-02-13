@@ -33,6 +33,9 @@
   <!--FAVICON-->
   <link rel="icon" type="image/x-icon" href="{{url('/assets/amaznot.ico')}}">
 
+  <!-- EXTERNAL CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+
   <!--SMOOTH SCROLLING CROSS-BROWSER-->
   <script>
     $(document).ready(function() {
@@ -178,7 +181,13 @@
             </li>
             <li class="nav-item small-screen">
               @if(Illuminate\Support\Facades\Auth::check())
-              <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+              <form action="{{ route('logout') }}" method="post" class="nav-form">
+                @csrf
+                <button type="submit" class="nav-link controller-link">
+                  <i class="fas fa-sign-out-alt"></i>
+                  Logout
+                </button>
+              </form>
               @else
               <a class="nav-link" href="{{ route('login') }}">Login</a>
               @endif
