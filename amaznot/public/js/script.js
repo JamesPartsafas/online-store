@@ -17,10 +17,10 @@ $(document).ready(function () {
     const categories = JSON.parse($('.headerData').val());
     const subcategories = categories.filter(cat => cat.category === $(this).html().trim()).map(cat => cat.subcategory);
     let htmlElements = subcategories.map(sub => {
-      const url = `https://${window.location.hostname}/products/${$(this).html().trim().replaceAll(' ', '%20')}?subcategory=${sub.replaceAll(' ', '%20')}`;
+      const url = `https://${window.location.host}/products/${encodeURI($(this).html().trim())}?subcategory=${encodeURI(sub)}`;
       return `<a class="category-item-link" href=${url}>${sub}</a>`
     });
-    htmlElements = htmlElements.toString().replaceAll(',', '');
+    htmlElements = htmlElements.join("")
     $(".category-links").html(`<h5 class="category-item-header">Choose a Subcategory</h5>${htmlElements}`);
   })
 })
