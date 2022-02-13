@@ -1,6 +1,32 @@
 //Here goes all our JavaScript scripts
 
-//TABBED PORTFOLIO
+/*NAVBAR*/
+
+const languages = ["EN", "FR"];
+const currencies = ["CAD", "USD"];
+
+$(document).ready(function () {
+  $(".change-dropdown").click(function () {
+    if (languages.includes($(this).html())) {
+      $(".lang").html($(this).text());
+    } else if (currencies.includes($(this).html())) {
+      $(".currency").html($(this).text());
+    }
+  });
+  $(".category-item-title").hover(function () {
+    const categories = JSON.parse($('.headerData').val());
+    const subcategories = categories.filter(cat => cat.category === $(this).html().trim()).map(cat => cat.subcategory);
+    let htmlElements = subcategories.map(sub => {
+      const url = `https://${window.location.host}/products/${encodeURI($(this).html().trim())}?subcategory=${encodeURI(sub)}`;
+      return `<a class="category-item-link" href=${url}>${sub}</a>`
+    });
+    htmlElements = htmlElements.join("")
+    $(".category-links").html(`<h5 class="category-item-header">Choose a Subcategory</h5>${htmlElements}`);
+  })
+})
+
+/*ENDNAVBAR*/
+
 filterSelection("all") // Execute the function and show all columns
 function filterSelection(c) {
   var x, i;
