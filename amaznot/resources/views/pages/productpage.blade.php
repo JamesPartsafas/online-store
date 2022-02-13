@@ -20,7 +20,7 @@
    </div>
    <div style= "margin-left:3.5%;">
     <?php echo "Price:"; ?> {{  $product['price'] }} <?php echo "$"; ?>
-<<<<<<< Updated upstream
+
      <?php echo nl2br("\n"); ?>   <?php echo "Weight:"; ?>{{ $product['weight'] }}
      <form  method='post'>
 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -37,7 +37,7 @@
     Add to Cart</button>
   </div>
 </form>
-=======
+
      <?php echo nl2br("\n"); ?>   <?php echo "Weight: "; ?>{{ $product['weight'] }}<?php echo nl2br("\n"); ?> <?php echo nl2br("\n"); ?> 
 </div>
 @if (!$userCanAddToCart)
