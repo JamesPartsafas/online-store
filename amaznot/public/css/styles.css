@@ -342,7 +342,7 @@ a:active {
 }
 
 .section-bg {
-  background-color: grey;
+  background-color: #DCDCDC;
 }
 
 .section-title {
@@ -358,6 +358,7 @@ a:active {
   padding-bottom: 20px;
   position: relative;
 }
+
 
 /*Footer*/
 
