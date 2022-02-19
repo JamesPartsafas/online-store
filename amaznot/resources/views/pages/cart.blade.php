@@ -3,16 +3,33 @@
 @section('content')
     
     <div class="cart-items">
-        <div id="cart-holder">
+        <form action="{{ route('orders') }}" method="post">
+
+            @csrf
+
+            <div id="cart-holder">
     
-        </div>
-    
-        <div id="price-holder">
-            <p id="subtotal"></p>
-            <p id="qst"></p>
-            <p id="gst"></p>
-            <h2 id="total-price"></h2>
-        </div>
+            </div>
+        
+            <div id="price-holder">
+                <p id="subtotal"></p>
+                <p id="qst"></p>
+                <p id="gst"></p>
+                <h2 id="total-price"></h2>
+            </div>
+
+            <label for="credit_card" style="color:red">
+                WARNING: Input not secure. Do not enter sensitive data
+            </label>
+            <input type="text" id="credit_card" name="credit_card" placeholder="Fake Credit Card Number">
+            @error('credit_card')
+                <div class="text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
+            
+            <button type = "submit">Purchase</button>
+        </form>
     </div>
 
     <script>
@@ -51,6 +68,8 @@
             })
 
             content += "</ul>"
+            const cartString = JSON.stringify(cart).replace(/"/g, '&quot;')
+            content += `<input type="hidden" id="cart-data" name="cart-data" value="${cartString}">`
 
             const subtotal = cart.reduce((acc, element) => {
                 return acc += element.amount * parseFloat(element.price)

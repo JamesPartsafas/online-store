@@ -7,6 +7,7 @@ use App\Http\Controllers\ListController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 
@@ -48,3 +49,7 @@ Route::post('/admin/addproduct', [AdminController::class, 'store']);
 
 // Cart Page
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
+
+// Orders
+Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+Route::post('/orders', [OrderController::class, 'store']);
