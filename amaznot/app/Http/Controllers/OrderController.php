@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -20,7 +21,7 @@ class OrderController extends Controller
         {
             return $redirect;
         }
-        
+
         $orders = Order::all();
 
         return view('pages.orders', [
@@ -49,16 +50,21 @@ class OrderController extends Controller
         $creditCard = $request->credit_card;
         $price = $this->getPrice($request);
 
+        if ($price <= 0)
+            return redirect()->route('cart');
+
         //Write to DB
-        $createdOrder = Order::create([
-            'user_id' => $userId,
-            'total' => $price,
-            'credit_card' => $creditCard
-        ]);
+        DB::transaction(function () use ($userId, $price, $creditCard, $request) {
+            $createdOrder = Order::create([
+                'user_id' => $userId,
+                'total' => $price,
+                'credit_card' => $creditCard
+            ]);
 
-        $orderItems = $this->getOrderItems($request, $createdOrder->id);
+            $orderItems = $this->getOrderItems($request, $createdOrder->id);
 
-        OrderItem::insert($orderItems);
+            OrderItem::insert($orderItems);
+        });
 
         //Return view
         return redirect()->route('orders', ['clearCart' => true]);
@@ -90,6 +96,9 @@ class OrderController extends Controller
         $orderItems = array();
         foreach ($cartItems as $item)
         {
+            if ($item['amount'] <= 0)
+                continue;
+
             $arrItem = array(
                 'order_id' => $orderId,
                 'product_id' => $item['id'],
