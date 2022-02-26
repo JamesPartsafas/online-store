@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -25,5 +26,42 @@ class LoginTest extends TestCase
         $response = $this->actingAs($user)->get(route('login'));
 
         $response->assertRedirect(route('home'));
+    }
+
+    public function test_user_can_log_in()
+    {
+        $name = 'testUser';
+        $password = '123456789';
+        $user = User::factory()->create([
+            'name' => $name,
+            'password' => Hash::make($password)
+        ]);
+
+        $response = $this->post(route('login'), [
+            'name' => $name,
+            'password' => $password
+        ]);
+
+        $response->assertRedirect(route('home'));
+        $this->assertAuthenticatedAs($user);
+    }
+
+    public function test_user_cannot_login_with_incorrect_info()
+    {
+        $name = 'testUser';
+        $password = '123456789';
+        User::factory()->create([
+            'name' => $name,
+            'password' => Hash::make($password)
+        ]);
+
+        $response = $this->from(route('login'))
+                        ->post(route('login'), [
+                            'name' => $name,
+                            'password' => 'invalidPassword'
+                        ]);
+
+        $response->assertRedirect(route('login'));
+        $this->assertGuest();
     }
 }
