@@ -26,3 +26,4 @@ The emergence of e-commerce has created large-scale implications into the world 
 * Browsing Items
 * Adding Product to the cart
 * Checking out
+* Search functionality
