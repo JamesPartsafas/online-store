@@ -15,14 +15,14 @@ class AddProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
-            $table->text('category');
+            $table->text('name')->default('');
+            $table->text('category')->default('');
             $table->text('subcategory')->nullable();
-            $table->double('price', 6, 2);
-            $table->text('about');
-            $table->text('details');
-            $table->text('weight');
-            $table->text('image');
+            $table->double('price', 6, 2)->default(0);
+            $table->text('about')->default('');
+            $table->text('details')->default('');
+            $table->text('weight')->default(0);
+            $table->text('image')->default('');
             $table->timestamps();
         });
     }

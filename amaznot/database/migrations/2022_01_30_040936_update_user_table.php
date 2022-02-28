@@ -13,10 +13,16 @@ class UpdateUserTable extends Migration
      */
     public function up()
     {
+        //SQLite used for testing requires 
+        //that multiple calls are made in this manner to modify the table
         Schema::table('users', function (Blueprint $table) {
-            $table->unique('name');
+            $table->unique('name')->default('');
+        });
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('role')->default('user');
+        });
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn(['email', 'email_verified_at', 'remember_token']);
-            $table->string('role');
         });
     }
 
