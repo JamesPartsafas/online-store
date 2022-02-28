@@ -135,4 +135,26 @@ const increment = (id) => {
   document.getElementById(id).value = value
 };
 
+const decrement1 = (amount) => {
+  let value = document.getElementById(amount).innerHTML 
+  value=parseInt(value)
+  if (value <= 0)
+    return
+
+  value--
+  document.getElementById(amount).innerHTML  = value
+};
+
+const increment1 = (amount) => {
+  let value = document.getElementById(amount).innerHTML
+ value=parseInt(value)
+  value++
+  document.getElementById(amount).innerHTML = value
+};
+
+
+
+
+
+
 //End cart logic

@@ -11,17 +11,19 @@
   <img src=" {{ $product['image'] }}"  class="img-fluid" alt="product image" title="product image" style = "object-fit:scale-down;width:350px;height:350px;border: 4px solid #F5F5F5;">
     </div>
         </div>
- 
   <div class="col" style="margin-left:2%;margin-top:relative;">
 <div class="card text-dark bg-light" style="max-width: 38rem;max-height:18rem;padding:1px;border: 4px solid #F5F5F5;">
   <div class="card-body" > 
   <div class="alert alert-light" role="alert" style="border: solid #FBF8F1;" >
      <strong> <h4>{{ str_replace('|', ' ', $product['name']) }}</strong></h4>  
    </div>
+   
    <div style= "margin-left:3.5%;">
     <?php echo "Price:"; ?> {{  $product['price'] }} <?php echo "$"; ?>
      <?php echo nl2br("\n"); ?> 
-     <?php echo "Weight: "; ?> {{ $product['weight'] }} <?php echo nl2br("\n"); ?> <?php echo nl2br("\n"); ?> 
+     
+   @if ($product['weight'] == null)    @else   <?php echo "Weight: "; ?> {{ $product['weight'] }} @endif
+     <?php echo nl2br("\n"); ?> <?php echo nl2br("\n"); ?> 
 </div>
 @if (!$userCanAddToCart)
     {{ $userCanAddToCart }}
