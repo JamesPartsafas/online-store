@@ -52,4 +52,5 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
 // Orders
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+Route::get('/orders/{id}', [OrderController::class, 'orderDetails'])->name('ordersitems');
 Route::post('/orders', [OrderController::class, 'store']);

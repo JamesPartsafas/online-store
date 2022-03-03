@@ -22,16 +22,18 @@ class OrderController extends Controller
             return $redirect;
         }
 
-        $orders = Order::all();
+        $orders = Order::where('user_id', Auth::user()->id)->orderBy('user_id','Desc')->get();
+        $orders = Order::paginate(10);
 
         return view('pages.orders', [
             'orders' => $orders,
             'clearCart' => $request->query('clearCart')
         ]);
     }
-
+    
     public function store(Request $request)
     {
+        
         //Check credentials
         if ($redirect = parent::redirectOnNotUser($request))
         {
@@ -68,6 +70,7 @@ class OrderController extends Controller
 
         //Return view
         return redirect()->route('orders', ['clearCart' => true]);
+        
     }
 
     //Calculate total price with taxes based on cart data
@@ -112,4 +115,29 @@ class OrderController extends Controller
 
         return $orderItems;
     }
+    
+    public function orderDetails(Request $request, $id)
+    {
+        //Check credentials
+        if ($redirect = parent::redirectOnNotUser($request))
+        {
+            return $redirect;
+        }
+
+        $orderDetails = OrderItem::with('order_items')->where('id', $id)->get();
+        $ordersDetails = OrderItem::paginate(10);
+
+        return view('pages.ordersitems', [
+            'orders' => $orderDetails,
+            'clearCart' => $request->query('clearCart')
+        ]);
+    }
+
+    // Delete an Order
+    public function deleteOrder(Request $request, $id)
+    {
+        $deleted = OrderItem::with('order_items')->where('id', $id)->delete();
+        Order::index($request);
+    }
+    
 }
