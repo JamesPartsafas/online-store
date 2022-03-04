@@ -27,7 +27,7 @@ class ProductSeeder extends Seeder
                     $onFirstLine = false;
                 else
                 {
-                    echo $count . " / 5859\n";
+                    echo $count . " / 5860\n";
                     $count++;
 
                     $categories = explode("|", $data[1]);

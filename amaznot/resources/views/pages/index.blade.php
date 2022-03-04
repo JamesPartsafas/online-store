@@ -11,7 +11,9 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
+        <a href="{{ route('productpage', ['category' => 'Home and Kitchen', 'id' => '1140']) }}">
         <img class="d-block w-100" src="{{url('/assets/cover1.png')}}">
+        </a>
       </div>
       <div class="carousel-item">
         <a href="{{ route('productlist', ['category' => 'Pet Supplies']) }}">
