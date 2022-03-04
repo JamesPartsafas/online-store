@@ -5,7 +5,11 @@
 
 @foreach($orders as $order)
     {{ $order }}
-    <button type = 'submit'> Delete </button>
+    <form action="{{ route('deleteOrder') }}" method="post">
+        @csrf
+        <input type="hidden" id="order_id" name="order_id" value="{{ $order['id'] }}">
+        <button type = 'submit'> Delete </button>
+    </form>
 @endforeach
 
 @if ($clearCart)

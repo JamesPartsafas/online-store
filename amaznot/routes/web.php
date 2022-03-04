@@ -54,5 +54,5 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 Route::get('/orders/{id}', [OrderController::class, 'orderDetails'])->name('ordersitems');
 Route::get('/orders/{order_id}/{product_id}', [OrderController::class, 'productDetails'])->name('product');
-Route::get('/orders/deleteOrder', [OrderController::class, 'deleteOrder'])->name('deleteOrder');
+Route::post('/orders/deleteOrder', [OrderController::class, 'deleteOrder'])->name('deleteOrder');
 Route::post('/orders', [OrderController::class, 'store']);

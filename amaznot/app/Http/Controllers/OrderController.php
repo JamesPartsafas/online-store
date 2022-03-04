@@ -23,7 +23,9 @@ class OrderController extends Controller
         }
 
         $orders = Order::select('id', 'user_id', 'total', 'credit_card' , 'created_at')
-        ->where('user_id', Auth::user()->id)->orderBy('user_id','Desc')->paginate(10);
+                        ->where('user_id', Auth::user()->id)
+                        ->orderBy('user_id','Desc')
+                        ->paginate(10);
 
         return view('pages.orders', [
             'orders' => $orders,
@@ -123,9 +125,12 @@ class OrderController extends Controller
         {
             return $redirect;
         }
-    
-        $orderDetails = OrderItem::select('id', 'order_id', 'product_id', 'amount' , 'created_at')
-        ->where('order_id',$id)->orderBy('order_id','Desc')->paginate(10);
+
+        $orderDetails = Product::join('order_items', 'products.id', '=', 'order_items.product_id')
+                                ->join('orders', 'order_items.order_id', '=', 'orders.id')
+                                ->where('orders.id', $id)
+                                ->select('products.*', 'order_items.amount')
+                                ->get();
 
         return view('pages.ordersitems', [
             'orders' => $orderDetails,
@@ -156,14 +161,20 @@ class OrderController extends Controller
     }
 
     // Delete an Order
-    public function deleteOrder(Request $request, $id)
+    public function deleteOrder(Request $request)
     {
-        $deleted = Order::select('id', 'user_id', 'total', 'credit_card' , 'created_at')
-        ->where('id', $id)->findorFail();
+        //Check credentials
+        if ($redirect = parent::redirectOnNotUser($request))
+        {
+            return $redirect;
+        }
 
-        $deleted->delete();
+        $id = $request->get('order_id');
+
+        OrderItem::where('order_id', $id)->delete();
+        Order::where('id', $id)->delete();
         
-        return redirect('/pages/orders');
+        return redirect(route('orders'));
     }
     
 }
