@@ -5,6 +5,7 @@
 
 @foreach($orders as $order)
     {{ $order }}
+    <button type = 'submit'> Delete </button>
 @endforeach
 
 @if ($clearCart)

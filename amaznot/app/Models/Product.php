@@ -26,4 +26,10 @@ class Product extends Model
         'weight',
         'image'
     ];
+
+    // Create Relation with OrderItem
+    public function product()
+    {
+        return $this->belongsToMany('App\Models\OrderItem');
+    }
 }

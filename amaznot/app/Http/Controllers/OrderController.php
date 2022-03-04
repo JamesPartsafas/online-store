@@ -22,8 +22,8 @@ class OrderController extends Controller
             return $redirect;
         }
 
-        $orders = Order::where('user_id', Auth::user()->id)->orderBy('user_id','Desc')->get();
-        $orders = Order::paginate(10);
+        $orders = Order::select('id', 'user_id', 'total', 'credit_card' , 'created_at')
+        ->where('user_id', Auth::user()->id)->orderBy('user_id','Desc')->paginate(10);
 
         return view('pages.orders', [
             'orders' => $orders,
@@ -123,21 +123,47 @@ class OrderController extends Controller
         {
             return $redirect;
         }
-
-        $orderDetails = OrderItem::with('order_items')->where('id', $id)->get();
-        $ordersDetails = OrderItem::paginate(10);
+    
+        $orderDetails = OrderItem::select('id', 'order_id', 'product_id', 'amount' , 'created_at')
+        ->where('order_id',$id)->orderBy('order_id','Desc')->paginate(10);
 
         return view('pages.ordersitems', [
             'orders' => $orderDetails,
-            'clearCart' => $request->query('clearCart')
+            'clearCart' => $request->query('Product')
         ]);
+    }
+
+    public function productDetails(Request $request, $id)
+    {
+        //Check credentials
+        if ($redirect = parent::redirectOnNotUser($request))
+        {
+            return $redirect;
+        }
+
+        $id = $request->route('product_id');
+
+        $productDetails = Product::select('id', 'name', 'category', 'subcategory', 'price', 'about', 'details', 'weight', 'image')
+        ->where('id', $id)->firstorFail();
+
+        $userCanAddToCart = false;
+
+        return view('pages.productpage', [
+            'product' => $productDetails,
+            'userCanAddToCart' => $userCanAddToCart
+        ]);
+
     }
 
     // Delete an Order
     public function deleteOrder(Request $request, $id)
     {
-        $deleted = OrderItem::with('order_items')->where('id', $id)->delete();
-        Order::index($request);
+        $deleted = Order::select('id', 'user_id', 'total', 'credit_card' , 'created_at')
+        ->where('id', $id)->findorFail();
+
+        $deleted->delete();
+        
+        return redirect('/pages/orders');
     }
     
 }

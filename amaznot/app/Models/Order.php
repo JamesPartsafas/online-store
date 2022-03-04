@@ -29,4 +29,10 @@ class Order extends Model
     {
         return $this->hasMany('App\Models\OrderItem','order_id');
     }
+
+    // Create Relation with Product
+    public function product()
+    {
+        return $this->hasOne('App\Models\Product');
+    }
 }

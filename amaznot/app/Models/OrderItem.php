@@ -29,4 +29,11 @@ class OrderItem extends Model
     {
         return $this->belongsTo('App\Models\Order');
     }
+
+    // Create Relation with Product
+    public function product()
+    {
+        return $this->hasMany('App\Models\Product');
+    }
+
 }
