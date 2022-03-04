@@ -8,6 +8,7 @@ class LoginController extends Controller
 {
     public function index()
     {
+        // Confirm User Logged in
         if ($redirect = parent::redirectOnAuthenticated())
         {
             return $redirect;
@@ -24,7 +25,7 @@ class LoginController extends Controller
             return $redirect;
         }
 
-        // Validate
+        // Validation required by user
         $this->validate($request,
         [
             'name' => 'required',
@@ -33,12 +34,12 @@ class LoginController extends Controller
 
         $credentials = $request->only('name', 'password');
 
-        // Sign in User
+        // Confirm Login information with Database 
         if(!auth()->attempt($credentials))
         {
-            return back()->with('status', 'Invalid login details');
+            return back()->with('status', 'Invalid login details'); 
         }
 
-        return redirect()->route('home');
+        return redirect()->route('home'); // Redirect to Product Page
     }
 }

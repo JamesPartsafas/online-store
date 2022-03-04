@@ -23,4 +23,17 @@ class OrderItem extends Model
         'created_at',
         'updated_at',
     ];
+
+    // Create Relation between order and Order Item
+    public function order_items()
+    {
+        return $this->belongsTo('App\Models\Order');
+    }
+
+    // Create Relation with Product
+    public function product()
+    {
+        return $this->hasMany('App\Models\Product');
+    }
+
 }

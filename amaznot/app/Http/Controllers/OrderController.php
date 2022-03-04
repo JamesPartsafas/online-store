@@ -22,16 +22,20 @@ class OrderController extends Controller
             return $redirect;
         }
 
-        $orders = Order::all();
+        $orders = Order::select('id', 'user_id', 'total', 'credit_card' , 'created_at')
+                        ->where('user_id', Auth::user()->id)
+                        ->orderBy('user_id','Desc')
+                        ->paginate(10);
 
         return view('pages.orders', [
             'orders' => $orders,
             'clearCart' => $request->query('clearCart')
         ]);
     }
-
+    
     public function store(Request $request)
     {
+        
         //Check credentials
         if ($redirect = parent::redirectOnNotUser($request))
         {
@@ -68,6 +72,7 @@ class OrderController extends Controller
 
         //Return view
         return redirect()->route('orders', ['clearCart' => true]);
+        
     }
 
     //Calculate total price with taxes based on cart data
@@ -112,4 +117,64 @@ class OrderController extends Controller
 
         return $orderItems;
     }
+    
+    public function orderDetails(Request $request, $id)
+    {
+        //Check credentials
+        if ($redirect = parent::redirectOnNotUser($request))
+        {
+            return $redirect;
+        }
+
+        $orderDetails = Product::join('order_items', 'products.id', '=', 'order_items.product_id')
+                                ->join('orders', 'order_items.order_id', '=', 'orders.id')
+                                ->where('orders.id', $id)
+                                ->select('products.*', 'order_items.amount')
+                                ->get();
+
+        return view('pages.ordersitems', [
+            'orders' => $orderDetails,
+            'clearCart' => $request->query('Product')
+        ]);
+    }
+
+    public function productDetails(Request $request, $id)
+    {
+        //Check credentials
+        if ($redirect = parent::redirectOnNotUser($request))
+        {
+            return $redirect;
+        }
+
+        $id = $request->route('product_id');
+
+        $productDetails = Product::select('id', 'name', 'category', 'subcategory', 'price', 'about', 'details', 'weight', 'image')
+        ->where('id', $id)->firstorFail();
+
+        $userCanAddToCart = false;
+
+        return view('pages.productpage', [
+            'product' => $productDetails,
+            'userCanAddToCart' => $userCanAddToCart
+        ]);
+
+    }
+
+    // Delete an Order
+    public function deleteOrder(Request $request)
+    {
+        //Check credentials
+        if ($redirect = parent::redirectOnNotUser($request))
+        {
+            return $redirect;
+        }
+
+        $id = $request->get('order_id');
+
+        OrderItem::where('order_id', $id)->delete();
+        Order::where('id', $id)->delete();
+        
+        return redirect(route('orders'));
+    }
+    
 }

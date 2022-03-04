@@ -12,7 +12,7 @@ class ProductController extends Controller
     {
         $id = $request->route('id');
 
-        try 
+        try
         {
             $product = Product::
                 select('id', 'name', 'category', 'subcategory', 'price', 'about', 'details', 'weight', 'image')
