@@ -36,6 +36,11 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 // Home 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Footer
+Route::get('/deals', [HomeController::class, 'deals'])->name('deals');
+Route::get('/contactus', [HomeController::class, 'contactus'])->name('contactus');
+Route::get('/disclaimer', [HomeController::class, 'disclaimer'])->name('disclaimer');
+
 // Product List
 Route::get('/products/{category}', [ListController::class, 'index'])->name('productlist');
 Route::get('/products/{category}?subcategory={subcategory}', [ListController::class, 'index'])->name('productsubcatlist');
