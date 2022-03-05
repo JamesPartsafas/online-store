@@ -251,8 +251,9 @@
       </div>
       <div class="col-6 footer-offers">
         <h4>Our Offers</h4>
-        <a href="#" class="footer-links">Deals</a>
-        <a href="#" class="footer-links">Contact Us</a>
+        <a href="{{ route('deals') }}" class="footer-links">Deals</a>
+        <a href="{{ route('contactus') }}" class="footer-links">Contact Us</a>
+        <a href="{{ route('disclaimer') }}" class="footer-links">Disclaimer</a>
       </div>
     </div>
     <div class="accepted-payment">

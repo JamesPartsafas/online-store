@@ -64,112 +64,6 @@
 </div>
 <!-- END FEATURED ITEMS -->
 
-<!-- PORTFOLIO GALLERY GRID -- TO DO LATER -->
-<!--
-<div class="container">
-<h1 class="text-center" style="font-weight: bold;">BEST SELLERS</h1>
-<div class="d-flex justify-content-center">
-    <button class="btn-bestsellers" onclick="filterSelection('clothing')"> Clothing, Shoes & Jewelry</button>  
-    <button class="btn-bestsellers" onclick="filterSelection('baby')"> Baby Products</button>
-    <button class="btn-bestsellers" onclick="filterSelection('home')"> Home & Kitchen</button>
-    <button class="btn-bestsellers" onclick="filterSelection('toys')"> Toys & Games</button>
-</div>
-
-<div class="column-bestsellers clothing">
-    <div class="content-bestsellers">
-    <img src="" alt="" style="width:100%">
-      <h4>Title</h4>
-      <p>Description</p>
-    </div>
-  </div>
-  <div class="column-bestsellers clothing">
-    <div class="content-bestsellers">
-      <img src="" alt="" style="width:100%">
-      <h4>Title</h4>
-      <p>Description</p>
-    </div>
-  </div>
-  <div class="column-bestsellers clothing">
-    <div class="content-bestsellers">
-      <img src="" alt="" style="width:100%">
-      <h4>Title</h4>
-      <p>Description</p>
-    </div>
-  </div>
-
-  <div class="row-bestsellers">
-  <div class="column-bestsellers baby">
-    <div class="content-bestsellers">
-      <img src="" alt="" style="width:100%">
-      <h4>Title</h4>
-      <p>Description</p>
-    </div>
-  </div>
-  <div class="column-bestsellers baby">
-    <div class="content-bestsellers">
-      <img src="" alt="" style="width:100%">
-      <h4>Title</h4>
-      <p>Description</p>
-    </div>
-  </div>
-  <div class="column-bestsellers baby">
-    <div class="content-bestsellers">
-      <img src="" alt="" style="width:100%">
-      <h4>Title</h4>
-      <p>Description</p>
-    </div>
-  </div>
-
-  <div class="column-bestsellers home">
-    <div class="content-bestsellers">
-      <img src="" alt="" style="width:100%">
-      <h4>Title</h4>
-      <p>Description</p>
-    </div>
-  </div>
-  <div class="column-bestsellers home">
-    <div class="content-bestsellers">
-      <img src="" alt="" style="width:100%">
-      <h4>Title</h4>
-      <p>Description</p>
-    </div>
-  </div>
-  <div class="column-bestsellers home">
-    <div class="content-bestsellers">
-      <img src="" alt="" style="width:100%">
-      <h4>Title</h4>
-      <p>Description</p>
-    </div>
-  </div>
-</div>
-
-<div class="column-bestsellers toys">
-    <div class="content-bestsellers">
-      <img src="" alt="" style="width:100%">
-      <h4>Title</h4>
-      <p>Description</p>
-    </div>
-  </div>
-  <div class="column-bestsellers toys">
-    <div class="content-bestsellers">
-      <img src="" alt="" style="width:100%">
-      <h4>Title</h4>
-      <p>Description</p>
-    </div>
-  </div>
-  <div class="column-bestsellers toys">
-    <div class="content-bestsellers">
-      <img src="" alt="" style="width:100%">
-      <h4>Title</h4>
-      <p>Description</p>
-    </div>
-  </div>
-
-</div>
--->
-<!-- END BEST SELLERS -->
-
-
 <!-- PROMO IMAGE -->
 <div class="container mt-5 mb-5">
   <a href="{{ route('productlist', ['category' => 'Toys and Games']) }}">
@@ -195,12 +89,5 @@
         <p>Got any questions? Send us a message and our 24/7 customer support group will reply to you right away.</p>
     </div>
 </div>
-
-<!-- TO DO LATER - WILL INCORPORATE MORE IMAGES
-<h1 class="text-center" style="font-weight: bold;">SHOP POPULAR CATEGORIES</h1>
-<div class="container">
-popular categories go here
-</div>
--->
 
 @endsection
