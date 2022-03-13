@@ -178,7 +178,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="{{ route('contactus') }}">Contact</a>
             </li>
             <li class="nav-item small-screen">
               @if(Illuminate\Support\Facades\Auth::check())
@@ -250,8 +250,7 @@
         </p>
       </div>
       <div class="col-6 footer-offers">
-        <h4>Our Offers</h4>
-        <a href="{{ route('deals') }}" class="footer-links">Deals</a>
+        <h4>Can we help?</h4>
         <a href="{{ route('contactus') }}" class="footer-links">Contact Us</a>
         <a href="{{ route('disclaimer') }}" class="footer-links">Disclaimer</a>
       </div>
