@@ -7,11 +7,11 @@
 
             @csrf
 
-            <div id="cart-holder">
+            <div id="cart-holder"  class="card text-dark bg-light"style="border: 4px solid #F5F5F5;">
      
             </div>
         
-            <div id="price-holder">
+            <div id="price-holder" class="card text-dark bg-light"style="border: 4px solid #F5F5F5;">
                 <p id="subtotal"></p>
                 <p id="qst"></p>
                 <p id="gst"></p>
@@ -20,17 +20,18 @@
             </div>
          
                     </button>
-            <label for="credit_card" style="color:red">
+            <label for="credit_card" style="color:red;margin-right:2%;margin-left:1%;" class="alert alert-warning" role="alert">
                 WARNING: Input not secure. Do not enter sensitive data
             </label>
-            <input type="text" id="credit_card" name="credit_card" placeholder="Fake Credit Card Number">
+            <input type="text" id="credit_card" name="credit_card" style="border:0.5px solid darkcyan;border-radius:17px;" placeholder="Fake Credit Card Number">
             @error('credit_card')
                 <div class="text-danger">
                     {{ $message }}
                 </div>
             @enderror
             
-            <button type = "submit">Purchase</button>
+            <button type = "submit" class="btn btn-info"  style="border-radius:17px;margin-left:1%;">
+          Purchase</button>
         </form>
     </div>
 
@@ -60,13 +61,13 @@
         const displayItems = (cart) => {
             let content = "<ul>"
             
-            cart.forEach((element,index) => {
+            cart.forEach((element) => {
                 content += `
                     <li>
-                        <b ><span id=${index}>${element.amount}</span> x $${element.price}</b>\t
-                        ${element.name}<img style="max-width:80px" src=${element.image}>
+                        <b >${element.amount} x $${element.price}</b>\t
+                       <span style="margin-right:2%;"> ${element.name}</span><img style="max-width:80px;border: 4px solid #F5F5F5;" src=${element.image}>
                     </li>
-                    <button type='button' class="btn btn-info" style="border-radius:17px;"onclick="decrementCart(${element.id})"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                    <button type='button' class="btn btn-info" style="border-radius:17px;margin-right:1%;"onclick="decrementCart(${element.id})"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
     <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
                  </button>
