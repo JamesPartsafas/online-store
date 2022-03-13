@@ -6,9 +6,8 @@
         <h1>CONTACT US</h1>
         <br />
         <p>Thank your for getting in touch with us. <br />We will get back to you as soon as we can.</p>
-        <p>Please enter the information below to pull up your order.</p>
         <br />
-        <form method="POST" action="">
+        <form method="" action="">
             <label for="fname">Name</label><br/>
             <input type="text" id="name" name="name" placeholder="Your name..." style="width:75%" required>
             <br/><br/>
@@ -18,8 +17,28 @@
             <label for="subject">Subject</label><br/>   
             <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px; width:75%;" required></textarea>
             <br/>
-            <input id="submit" type="submit" value="Submit">
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal">Submit</button>
         </form>
     </div>
 </div> 
+
+<div id="modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Contact us.</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Thank you for getting in touch with us. <br/> We will get back to you within 24-48 business hours.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.href='{{ route('home') }}';">Return to Home</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
 @endsection
