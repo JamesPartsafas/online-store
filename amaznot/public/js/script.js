@@ -135,6 +135,11 @@ const increment = (id) => {
   document.getElementById(id).value = value
 };
 
+
+
+
+
+
 //End cart logic
 
 // Logic for order history table - IE6 Friendly

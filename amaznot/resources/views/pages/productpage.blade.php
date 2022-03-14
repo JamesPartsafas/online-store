@@ -4,6 +4,7 @@
 
 @section('content')
 
+    {{-- displays the information of price,weight,name of the item --}}
    <div class="box-wrapper row mt-5" style="margin-left:3%;width:calc(100% - 3%);margin-top:relative;">
   <div class="row">
    <div class="col" > 
@@ -11,17 +12,19 @@
   <img src=" {{ $product['image'] }}"  class="img-fluid" alt="product image" title="product image" style = "object-fit:scale-down;width:350px;height:350px;border: 4px solid #F5F5F5;">
     </div>
         </div>
- 
   <div class="col" style="margin-left:2%;margin-top:relative;">
 <div class="card text-dark bg-light" style="max-width: 38rem;max-height:18rem;padding:1px;border: 4px solid #F5F5F5;">
   <div class="card-body" > 
   <div class="alert alert-light" role="alert" style="border: solid #FBF8F1;" >
      <strong> <h4>{{ str_replace('|', ' ', $product['name']) }}</strong></h4>  
    </div>
+   
    <div style= "margin-left:3.5%;">
     <?php echo "Price:"; ?> {{  $product['price'] }} <?php echo "$"; ?>
      <?php echo nl2br("\n"); ?> 
-     <?php echo "Weight: "; ?> {{ $product['weight'] }} <?php echo nl2br("\n"); ?> <?php echo nl2br("\n"); ?> 
+     
+   @if ($product['weight'] == null)    @else   <?php echo "Weight: "; ?> {{ $product['weight'] }} @endif
+     <?php echo nl2br("\n"); ?> <?php echo nl2br("\n"); ?> 
 </div>
 @if (!$userCanAddToCart)
     {{ $userCanAddToCart }}
@@ -56,7 +59,7 @@
       </div>
       
       <div id='remove-controls'>
-        <button  style="border-radius: 4px;" class="btn btn-primary" type="button" onclick="removeFromCart({{ $product['id'] }}, renderScreen)" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 3 14 14">
+        <button  style="border-radius:17px;" class="btn btn-info" type="button" onclick="removeFromCart({{ $product['id'] }}, renderScreen)" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 3 14 14">
           <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/></svg>
           Remove from Cart
         </button>
@@ -72,6 +75,9 @@
 </div>
 </div>
    
+
+       {{-- displays the information of item with full details --}}
+
 <div class="box-wrapper row mt-5" style="margin-left:3%;margin-top:relative;margin-bottom:25px;width:calc(100% - 3%);">
   <div class="card text-dark bg-light" style="width:62.5rem;border: 4px solid #F5F5F5;" >
     <div class="card-body">
@@ -102,6 +108,9 @@
     </div>
   </div>
 
+
+
+    {{-- functions related to adding or showing the buttons of increase/decrease item quantity with addition or removal from cart --}}
 
 <script>
   const renderScreen = (id) => {
