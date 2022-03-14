@@ -4,6 +4,7 @@
 
 @section('content')
 
+    {{-- displays the information of price,weight,name of the item --}}
    <div class="box-wrapper row mt-5" style="margin-left:3%;width:calc(100% - 3%);margin-top:relative;">
   <div class="row">
    <div class="col" > 
@@ -74,6 +75,9 @@
 </div>
 </div>
    
+
+       {{-- displays the information of item with full details --}}
+
 <div class="box-wrapper row mt-5" style="margin-left:3%;margin-top:relative;margin-bottom:25px;width:calc(100% - 3%);">
   <div class="card text-dark bg-light" style="width:62.5rem;border: 4px solid #F5F5F5;" >
     <div class="card-body">
@@ -147,6 +151,9 @@
     </div>
   </div> 
 </div>
+
+
+    {{-- functions related to adding or showing the buttons of increase/decrease item quantity with addition or removal from cart --}}
 
 <script>
   const renderScreen = (id) => {
