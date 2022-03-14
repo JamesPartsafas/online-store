@@ -136,3 +136,44 @@ const increment = (id) => {
 };
 
 //End cart logic
+
+// Logic for order history table - IE6 Friendly
+
+function sort(th) {
+
+  if (this.asc === undefined)
+    this.asc = true;
+
+  var table = th.parentElement;
+
+  while (table.tagName.toUpperCase() != 'TABLE') {
+      table = table.parentElement;
+      if (!table)
+          return false;
+  }
+
+  Array.prototype.slice.call(table.lastElementChild.querySelectorAll('tr'))
+      .sort(comparer(Array.prototype.slice.call(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+      .forEach(function (tr) { table.lastElementChild.appendChild(tr) });
+
+  if (this.asc)
+      th.textContent = th.textContent.replace('↑', '↓');
+  else
+      th.textContent = th.textContent.replace('↓', '↑');
+}
+
+function getCellValue (tr, index) { 
+  return tr.children[index].innerText || tr.children[index].textContent; 
+}
+
+function comparer (index, asc) {
+  return function (a, b) {
+      return function (value1, value2) {
+          return (value1 !== '' && value2 !== '' && !isNaN(value1) && !isNaN(value2))
+              ? value1 - value2
+              : value1.toString().localeCompare(value2);
+      }(getCellValue(asc ? a : b, index), getCellValue(asc ? b : a, index));
+  }
+};
+
+// End order history table logic
