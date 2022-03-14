@@ -118,6 +118,9 @@ const removeFromCart = (id, screenUpdateCallback) => {
   screenUpdateCallback(id)
 };
 
+
+
+
 const decrement = (id) => {
   let value = document.getElementById(id).value
 
