@@ -10,6 +10,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +62,6 @@ Route::get('/orders/{id}', [OrderController::class, 'orderDetails'])->name('orde
 Route::get('/orders/{order_id}/{product_id}', [OrderController::class, 'productDetails'])->name('product');
 Route::post('/orders/deleteOrder', [OrderController::class, 'deleteOrder'])->name('deleteOrder');
 Route::post('/orders', [OrderController::class, 'store']);
+
+// Search Functions
+Route::get('/search/{search?}', [SearchController::class, 'search'])->name('search');
