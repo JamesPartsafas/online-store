@@ -17,8 +17,8 @@ class SearchController extends Controller
         {
             $products = Product::select('id', 'name', 'category', 'price', 'image')
             ->where('name', $query)
-            ->orWhere('name', 'like', '%' . $query . '%')
-            ->orWhere('details', 'like', '%' . $query . '%')
+            ->orWhere('name', 'ilike', '%' . $query . '%')
+            ->orWhere('details', 'ilike', '%' . $query . '%')
             ->limit(21)
             ->get();
         }
