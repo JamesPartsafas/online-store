@@ -17,9 +17,10 @@ class SearchController extends Controller
         {
             $products = Product::select('id', 'name', 'category', 'price', 'image')
             ->where('name', $query)
-            ->orWhere('name', 'ilike', '%' . $query . '%')
-            ->orWhere('details', 'ilike', '%' . $query . '%')
-            ->limit(21)
+            ->orWhere('name', 'ilike', '%' . $query . '%') // Search Product Via Names
+            ->orWhere('about', 'ilike', '%' . $query . '%') // Search Product Description
+            ->orWhere('details', 'ilike', '%' . $query . '%') // Search Product Details
+            ->limit(21) // 21-Character Search Limit
             ->get();
         }
         catch (Exception $ex)
