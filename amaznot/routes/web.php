@@ -6,8 +6,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 
@@ -55,9 +56,12 @@ Route::post('/admin/addproduct', [AdminController::class, 'store']);
 // Cart Page
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
-// Orders
+// Orders Page
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 Route::get('/orders/{id}', [OrderController::class, 'orderDetails'])->name('ordersitems');
 Route::get('/orders/{order_id}/{product_id}', [OrderController::class, 'productDetails'])->name('product');
 Route::post('/orders/deleteOrder', [OrderController::class, 'deleteOrder'])->name('deleteOrder');
 Route::post('/orders', [OrderController::class, 'store']);
+
+// Search Page
+Route::get('/search/{query}', [SearchController::class, 'index'])->name('search');
