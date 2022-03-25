@@ -11,6 +11,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
