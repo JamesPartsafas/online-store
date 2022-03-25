@@ -12,7 +12,7 @@ class SearchTest extends TestCase
 
     public function test_search_page_returns_successfully()
     {
-        $response = $this->get(route('search', ['query' => 'Test'])); // TestQuery
+        $response = $this->get(route('search', ['query' => "Test"])); // TestQuery
 
         $response->assertStatus(200);
     }
