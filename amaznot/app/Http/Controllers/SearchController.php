@@ -20,7 +20,7 @@ class SearchController extends Controller
             ->orWhere('name', 'ilike', '%' . $query . '%') // Search Product Via Names
             ->orWhere('about', 'ilike', '%' . $query . '%') // Search Product Description
             ->orWhere('details', 'ilike', '%' . $query . '%') // Search Product Details
-            ->limit(21) // 21-Character Search Limit
+            ->limit(21) // 21 Item Search Limit
             ->get();
         }
         catch (Exception $ex)
