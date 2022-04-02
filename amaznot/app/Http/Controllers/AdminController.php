@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+
+    /**
+     * Confirm if user is logged in as administrator and load add product page.
+     * Else redirect to home.
+     *
+     * @return redirect
+     */
     public function index(Request $request)
     {   
         //Verify admin
@@ -32,6 +39,12 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * Confirm if user is logged in as administrator and load admin page.
+     * Else redirect to home.
+     *
+     * @return redirect
+     */
     public function store(Request $request)
     {   
         //Verify admin
@@ -83,6 +96,11 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * Queries all database categories.
+     *
+     * @return product category array
+     */
     private function getCategories()
     {
         return Product::

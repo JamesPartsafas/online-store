@@ -11,6 +11,9 @@ class OrderTest extends TestCase
 {
     use \Illuminate\Foundation\Testing\DatabaseMigrations;
 
+    /**
+     * Test for viewable order page
+    */
     public function test_order_page_can_be_accessed()
     {
         $user = User::factory()->create();
@@ -20,6 +23,9 @@ class OrderTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * Test for unauthorized access to order page
+    */
     public function test_order_page_cannot_be_accessed_by_unauthed()
     {
         $response = $this->get(route('orders'));
@@ -27,6 +33,9 @@ class OrderTest extends TestCase
         $response->assertRedirect(route('home'));
     }
 
+    /**
+     * Test for order page access by admin being inaccessible
+    */
     public function test_order_page_cannot_be_accessed_by_admin()
     {
         $user = User::factory()->create([

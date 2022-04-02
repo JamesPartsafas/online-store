@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    /**
+     * Query 3 random items for front page
+     *
+     * @return product array
+     */
     public function index()
     {
         try 
@@ -27,16 +32,21 @@ class HomeController extends Controller
         ]);
     }
 
+    /**
+     * Route to disclaimer page.
+     *
+     * @return route to disclaimer
+     */
     public function disclaimer ()
     {
         return view('pages.disclaimer');
     }
 
-    public function deals ()
-    {
-        return view('pages.deals');
-    }
-
+    /**
+     * Route to contact us page.
+     *
+     * @return route to contact us
+     */
     public function contactus ()
     {
         return view('pages.contactus');

@@ -27,7 +27,11 @@ class Product extends Model
         'image'
     ];
 
-    // Create Relation with OrderItem
+    /**
+     * Create relation with order item
+     *
+     * @return order_item relation
+     */
     public function product()
     {
         return $this->belongsToMany('App\Models\OrderItem');

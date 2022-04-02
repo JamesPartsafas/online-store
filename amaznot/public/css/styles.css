@@ -1,5 +1,4 @@
-/* Here goes all our CSS */
-
+/*SITEWIDE CSS*/
 body {
     font-family: 'Open Sans', sans-serif;
 }
@@ -8,7 +7,41 @@ body, html {
   height: 100%;
 }
 
-/*Navbar*/
+i.symbols {
+  color: tomato;
+    font-size: 3em;
+}
+
+i.rating {
+  color:gold; 
+  font-size: 1em;
+}
+
+h1, h4 {
+  color:  #333;
+  font-family: 'Work Sans', sans-serif;
+  word-wrap: break-word;
+}
+
+a {
+  color:  #00004d;
+}
+
+a:active {
+  color: darkcyan;
+}
+
+.contacts-container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding-left: 25%;
+  padding-right: 25%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+} 
+/*END SITEWIDE CSS*/
+
+/*NAVBAR*/
 .div-inline {
   display: inline;
 }
@@ -181,9 +214,9 @@ body, html {
   }
 
 }
-
 /*END NAVBAR*/
 
+/*HERO IMAGE*/
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("reverb.png");
   height: 50%;
@@ -201,7 +234,9 @@ body, html {
   transform: translate(-50%, -50%);
   color: white;
 }
+/*END HERO IMAGE*/
 
+/*PROMO IMAGE*/
 .promo-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("easter_banner.png");
   height: 50%;
@@ -219,30 +254,7 @@ body, html {
   transform: translate(-50%, -50%);
   color: white;
 }
-
-i.symbols {
-  color: tomato;
-    font-size: 3em;
-}
-
-i.rating {
-  color:gold; 
-  font-size: 1em;
-}
-
-h1, h4 {
-  color:  #333;
-  font-family: 'Work Sans', sans-serif;
-  word-wrap: break-word;
-}
-
-a {
-  color:  #00004d;
-}
-
-a:active {
-  color: darkcyan;
-}
+/*END PROMO IMAGE*/
 
 /*BEST SELLERS SECTION*/
 /* padding b/w rows */
@@ -292,17 +304,15 @@ a:active {
   background-color: #666;
   color: white;
 }
-
 /*END BEST SELLERS SECTION*/
 
+/*PRODUCT LIST*/
 .w-5 {
   display: inline-block;
   /* Used for pagination elements on product list page */
   width: 15px;
 }
 
-
-/* Product List Styles*/
 .subcategory .icon-box {
   margin-bottom: 20px;
   text-align: center;
@@ -358,10 +368,9 @@ a:active {
   padding-bottom: 20px;
   position: relative;
 }
+/*END PRODUCT LIST*/
 
-
-/*Footer*/
-
+/*FOOTER*/
 .main-footer {
   background-color: #bcddfe;
   padding: 160px 140px 40px;
@@ -437,8 +446,9 @@ a:active {
     position: relative;
   }
 }
+/*END FOTER*/
 
-/* Cart Page */
+/*CART PAGE*/
 .cart-items {
   width: 80%;
   margin: auto;
@@ -454,24 +464,12 @@ a:active {
   font-size: 20px;
   padding: 20px;
 }
+/*END CART PAGE*/
 
-/* End cart page */
-
-.contacts-container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding-left: 25%;
-  padding-right: 25%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-} 
-
-/*Order History Table*/
-
+/*ORDER HISTORY*/
 .clearBTN {
   background: transparent;
   outline: none;
   border: none;
 }
-
-/*END History Table*/
+/*END ORDER HISTORY*/

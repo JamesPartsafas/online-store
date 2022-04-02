@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+    /**
+     * Redirect if user is logged in, else proceed to registration.
+     *
+     * @return redirect
+     */
     public function index()
     {
         if ($redirect = parent::redirectOnAuthenticated())
@@ -19,6 +24,11 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
+    /**
+     * Validate registration information.
+     *
+     * @return redirect to home
+     */
     public function store(Request $request)
     {   
         if ($redirect = parent::redirectOnAuthenticated())

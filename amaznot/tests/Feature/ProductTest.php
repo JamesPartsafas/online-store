@@ -13,6 +13,9 @@ class ProductTest extends TestCase
 
     private $category;
 
+    /**
+     * Test category construction
+    */
     function __construct()
     {
         parent::__construct();
@@ -20,6 +23,9 @@ class ProductTest extends TestCase
         $this->category = "testCategory";
     } 
 
+    /**
+     * Test for viewable product page
+    */
     public function test_product_page_returns_successfully()
     {
         Product::factory()->create();
@@ -30,6 +36,9 @@ class ProductTest extends TestCase
         $response->assertViewHas('product');
     }
 
+    /**
+     * Test if 404 is returned for invalid product id
+    */
     public function test_product_page_returns_404_for_invalid_id()
     {
         $response = $this->get(route('productpage', ['category' => $this->category, 'id' => -1]));

@@ -12,6 +12,11 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    /**
+     * Redirect to home after authentication
+     *
+     * @return recirect to home
+     */
     protected function redirectOnAuthenticated()
     {
         if(auth()->check())
@@ -20,6 +25,11 @@ class Controller extends BaseController
         }
     }
 
+    /**
+     * Redirect to home if not admin.
+     *
+     * @return redirect to home
+     */
     protected function redirectOnNotAdmin(Request $request)
     {
         if(!auth()->check() || $request->user()->role !== 'admin')
@@ -28,6 +38,11 @@ class Controller extends BaseController
         }
     }
 
+    /**
+     * Redirect to home if not user.
+     *
+     * @return redirect to home
+     */
     protected function redirectOnNotUser(Request $request)
     {
         if(!auth()->check() || $request->user()->role !== 'user')

@@ -14,6 +14,9 @@ class ListTest extends TestCase
     private $category;
     private $subcategory;
 
+    /**
+     * Test category construction
+    */
     function __construct()
     {
         parent::__construct();
@@ -22,6 +25,9 @@ class ListTest extends TestCase
         $this->subcategory = "testSubcategory";
     } 
 
+    /**
+     * Test if product list returns successfully
+    */
     public function test_product_list_returns_successfully()
     {
         Product::factory()->count(5)->create();
@@ -32,6 +38,9 @@ class ListTest extends TestCase
         $response->assertViewHas('products');
     }
 
+    /**
+     * Test if product list shows subcategories
+    */
     public function test_product_list_shows_products_with_subcategory()
     {
         Product::factory()->count(5)->create();
@@ -49,6 +58,9 @@ class ListTest extends TestCase
         $response->assertViewHas('products');
     }
 
+    /**
+     * Test if 404 is returned for invalid category
+    */
     public function test_product_list_returns_404_for_invalid_category()
     {
         Product::factory()->count(5)->create();

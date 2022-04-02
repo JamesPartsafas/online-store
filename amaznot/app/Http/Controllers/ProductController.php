@@ -8,6 +8,11 @@ use Illuminate\Database\QueryException;
 
 class ProductController extends Controller
 {
+    /**
+     * Query requested product.
+     *
+     * @return product
+     */
     public function index(Request $request)
     {
         $id = $request->route('id');

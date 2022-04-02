@@ -14,6 +14,12 @@ class OrderController extends Controller
     const QST = 0.09975;
     const GST = 0.05;
 
+    /**
+     * Authenticate if user is logged in.
+     * Else load orders.
+     *
+     * @return redirect to orders
+     */
     public function index(Request $request)
     {
         //Check credentials
@@ -33,6 +39,12 @@ class OrderController extends Controller
         ]);
     }
     
+    /**
+     * Authenticate if user is logged in.
+     * Else process order.
+     *
+     * @return redirect
+     */
     public function store(Request $request)
     {
         
@@ -75,7 +87,11 @@ class OrderController extends Controller
         
     }
 
-    //Calculate total price with taxes based on cart data
+    /**
+     * Calculate total price with taxes based on cart data
+     * 
+     * @return totalPrice
+     */
     private function getPrice(Request $request)
     {
         $cartData = collect(json_decode($request->get('cart-data')));
@@ -93,7 +109,11 @@ class OrderController extends Controller
         return number_format((float)$price, 2, '.', '');
     }
 
-    //Prepares array of items associated to a specific order
+    /**
+     * Prepares array of items associated to a specific order
+     * 
+     * @return item array
+     */
     private function getOrderItems(Request $request, $orderId)
     {
         $cartItems = json_decode($request->get('cart-data'), true);
@@ -118,6 +138,11 @@ class OrderController extends Controller
         return $orderItems;
     }
     
+    /**
+     * Generates order details
+     *
+     * @return order details
+     */
     public function orderDetails(Request $request, $id)
     {
         //Check credentials
@@ -138,6 +163,11 @@ class OrderController extends Controller
         ]);
     }
 
+    /**
+     * Generate product details.
+     *
+     * @return product details
+     */
     public function productDetails(Request $request, $id)
     {
         //Check credentials
@@ -160,7 +190,11 @@ class OrderController extends Controller
 
     }
 
-    // Delete an Order
+    /**
+     * Delete an order
+     *
+     * @return redirect to orders
+     */
     public function deleteOrder(Request $request)
     {
         //Check credentials
