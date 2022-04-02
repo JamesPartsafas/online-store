@@ -12,6 +12,9 @@ class AdminTest extends TestCase
 {
     use \Illuminate\Foundation\Testing\DatabaseMigrations;
 
+    /**
+     * Test for admin page access
+     */
     public function test_admin_page_can_be_accessed()
     {
         $user = User::factory()->create([
@@ -23,6 +26,9 @@ class AdminTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * Test for unauthorized access to admin page
+     */
     public function test_non_authed_user_cannot_access_admin_page()
     {
         $response = $this->get(route('adminpage'));
@@ -30,6 +36,9 @@ class AdminTest extends TestCase
         $response->assertRedirect(route('home'));
     }
 
+    /**
+     * Test for regular user access to admin page
+     */
     public function test_regular_user_cannot_access_admin_page()
     {
         $user = User::factory()->create();
@@ -39,6 +48,9 @@ class AdminTest extends TestCase
         $response->assertRedirect(route('home'));
     }
 
+    /**
+     * Test for admin adding a product
+     */
     public function test_admin_can_add_product()
     {
         $productName = 'testName';

@@ -12,6 +12,9 @@ class RegisterTest extends TestCase
 {
     use \Illuminate\Foundation\Testing\DatabaseMigrations;
 
+    /**
+     * Test for viewable registration page
+    */
     public function test_register_page_returns_successfully()
     {
         $response = $this->get(route('register'));
@@ -19,6 +22,9 @@ class RegisterTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * Test for redirect for authorized user
+    */
     public function test_redirect_on_authed_user()
     {
         $user = User::factory()->create();
@@ -28,6 +34,9 @@ class RegisterTest extends TestCase
         $response->assertRedirect(route('home'));
     }
 
+    /**
+     * Test for registration success
+    */
     public function test_user_can_register()
     {
         $response = $this->post(route('register'), [
@@ -40,6 +49,9 @@ class RegisterTest extends TestCase
         $this->assertAuthenticated();
     }
 
+    /**
+     * Test for password confirmation upon registration
+    */
     public function test_registration_requires_password_confirmation()
     {
         $response = $this->from(route('register'))->post(route('register'), [
@@ -52,6 +64,9 @@ class RegisterTest extends TestCase
         $this->assertGuest();
     }
 
+    /**
+     * Test for uniqueness of username
+    */
     public function test_username_must_be_unique()
     {
         $name = 'testUser';

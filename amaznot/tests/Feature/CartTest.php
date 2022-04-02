@@ -11,6 +11,9 @@ class CartTest extends TestCase
 {
     use \Illuminate\Foundation\Testing\DatabaseMigrations;
 
+    /**
+     * Test for cart page access
+    */
     public function test_cart_page_can_be_accessed()
     {
         $user = User::factory()->create();
@@ -20,6 +23,9 @@ class CartTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * Test for unauthorized access to cart page
+    */
     public function test_non_authed_user_cannot_access_cart_page()
     {
         $response = $this->get(route('cart'));
@@ -27,6 +33,9 @@ class CartTest extends TestCase
         $response->assertRedirect(route('home'));
     }
 
+    /**
+     * Test for admin access to cart page being inaccessible
+    */
     public function test_admin_cannot_access_cart_page()
     {
         $user = User::factory()->create([

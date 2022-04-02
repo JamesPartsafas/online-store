@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ListController extends Controller
 {
+    /**
+     * Query database for all items, categories, and subcategories.
+     *
+     * @return product list
+     */
     public function index(Request $request)
     {
         try 

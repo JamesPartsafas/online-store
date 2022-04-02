@@ -2,7 +2,6 @@
 
 @section('content')
 
-   
 <section id="subcategory" class="subcategory">
 
     <div class="container">
@@ -27,8 +26,6 @@
             @endforeach
   
         </div>
-
-   
 
         <br>
         <div class="section-title section-bg">

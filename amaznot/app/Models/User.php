@@ -23,6 +23,11 @@ class User extends Authenticatable
         'role',
     ];
 
+    /**
+     * Checks if user has admin priveleges.
+     *
+     * @return role
+     */
     public function isAdmin() {
         return $this->role == 'admin';
     }

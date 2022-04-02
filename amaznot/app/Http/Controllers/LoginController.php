@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    /**
+     * Confirm is user is logged in, else redirect to login page
+     *
+     * @return redirect
+     */
     public function index()
     {
         // Confirm User Logged in
@@ -17,7 +22,11 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    
+    /**
+     * Validate user credentials
+     *
+     * @return redirect to home
+     */
     public function store(Request $request)
     {   
         if ($redirect = parent::redirectOnAuthenticated())

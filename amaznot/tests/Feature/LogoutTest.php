@@ -11,6 +11,9 @@ class LogoutTest extends TestCase
 {
     use \Illuminate\Foundation\Testing\DatabaseMigrations;
 
+    /**
+     * Test for logout and redirect to home
+    */
     public function test_user_can_logout()
     {
         $user = User::factory()->create();

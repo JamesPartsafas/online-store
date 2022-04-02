@@ -1,7 +1,4 @@
-//Here goes all our JavaScript scripts
-
 /*NAVBAR*/
-
 const languages = ["EN", "FR"];
 const currencies = ["CAD", "USD"];
 
@@ -24,15 +21,15 @@ $(document).ready(function () {
     $(".category-links").html(`<h5 class="category-item-header">Choose a Subcategory</h5>${htmlElements}`);
   })
 })
+/*END NAVBAR*/
 
-/*ENDNAVBAR*/
-
-filterSelection("Description") // Execute the function and show all columns
+/*TABBED SECTIONS*/
+// Show all columns
+filterSelection("Description") 
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("column-bestsellers");
   if (c == "all") c = "";
-  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
   for (i = 0; i < x.length; i++) {
     w3RemoveClass(x[i], "show");
     if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
@@ -74,9 +71,10 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
+/*END TABBED SECTIONS*/
 
+/*CART SECTION*/
 //Common logic for cart
-
 const addToCart = (id, productName, price, image, screenUpdateCallback) => {
   const value = document.getElementById(id).value
   let cart = JSON.parse(localStorage.getItem('cart'))
@@ -103,6 +101,7 @@ const addToCart = (id, productName, price, image, screenUpdateCallback) => {
   screenUpdateCallback(id)
 };
 
+//Remove item from cart
 const removeFromCart = (id, screenUpdateCallback) => {
   const cart = JSON.parse(localStorage.getItem('cart'))
   if (cart == null)
@@ -118,6 +117,7 @@ const removeFromCart = (id, screenUpdateCallback) => {
   screenUpdateCallback(id)
 };
 
+//Decrement quantity
 const decrement = (id) => {
   let value = document.getElementById(id).value
 
@@ -128,6 +128,7 @@ const decrement = (id) => {
   document.getElementById(id).value = value
 };
 
+//Increment quantity
 const increment = (id) => {
   let value = document.getElementById(id).value
 
@@ -135,15 +136,11 @@ const increment = (id) => {
   document.getElementById(id).value = value
 };
 
+/*END CART SECTION*/
 
-
-
-
-
-//End cart logic
-
+/*ORDERS SECTION*/
 // Logic for order history table - IE6 Friendly
-
+// Sort items according to header
 function sort(th) {
 
   if (this.asc === undefined)
@@ -167,10 +164,12 @@ function sort(th) {
       th.textContent = th.textContent.replace('↓', '↑');
 }
 
+// Retieve item data
 function getCellValue (tr, index) { 
   return tr.children[index].innerText || tr.children[index].textContent; 
 }
 
+// Compares two items
 function comparer (index, asc) {
   return function (a, b) {
       return function (value1, value2) {
@@ -181,4 +180,4 @@ function comparer (index, asc) {
   }
 };
 
-// End order history table logic
+/*END ORDERS SECTION*/
