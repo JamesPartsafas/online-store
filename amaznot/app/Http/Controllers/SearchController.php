@@ -28,7 +28,8 @@ class SearchController extends Controller
         }
         
         return view('pages.search', [
-            'products' => $products
+            'products' => $products,
+            'query' => $query
         ]);
     }
 }
