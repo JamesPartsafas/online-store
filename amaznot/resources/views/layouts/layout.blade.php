@@ -142,6 +142,15 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
+        <form action = "{{ route('search') }}" method = "post" style="text-align:" class="form-inline col-md-4 col-md-offset-4">
+          @csrf
+            <div class="form-group">
+              <input type = "text" name = "query" id = "query"  placeholder = "Search"
+              class = "form-control" value =""{{ old('query') }}"">
+              <button type="submit" class="btn"> <i class="fa fa-search"></i> </button>
+            </div>
+        </form>
+
         <div class="collapse navbar-collapse ml-auto navbar-items-container" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto navbar-items">
             <li class="nav-item">

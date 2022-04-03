@@ -14,7 +14,7 @@ class SearchTest extends TestCase
 
     public function test_search_page_returns_404_for_invalid_query()
     {
-        $response = $this->get(route('search', ['query' => "/"]));
+        $response = $this->post(route('search'));
 
         $response->assertStatus(404);
     }

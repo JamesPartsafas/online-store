@@ -10,8 +10,7 @@ class SearchController extends Controller
 {
     public function index(Request $request)
     {
-        $query = $request->route('query');
-        $query = urldecode($query);
+        $query = $request->input('query');
 
         try 
         {
