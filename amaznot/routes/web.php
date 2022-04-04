@@ -64,4 +64,4 @@ Route::post('/orders/deleteOrder', [OrderController::class, 'deleteOrder'])->nam
 Route::post('/orders', [OrderController::class, 'store']);
 
 // Search Page
-Route::get('/search/{query}', [SearchController::class, 'index'])->name('search');
+Route::post('/search', [SearchController::class, 'index'])->name('search');
