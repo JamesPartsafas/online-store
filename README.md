@@ -9,7 +9,6 @@
 
 ## Languages & techniques
 ### Front-end
-* SASS
 * Bootstrap
 ### Back-end
 * PHP Laravel
