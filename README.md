@@ -10,6 +10,7 @@
 ## Languages & techniques
 ### Front-end
 * Bootstrap
+* CSS
 ### Back-end
 * PHP Laravel
 ### Database
